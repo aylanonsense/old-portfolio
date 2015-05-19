@@ -1,0 +1,24 @@
+{
+  "name": "portfolio",
+  "version": "0.0.0",
+  "description": "My personal portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bridgs/portfolio.git"
+  },
+  "author": "bridgs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bridgs/portfolio/issues"
+  },
+  "homepage": "https://github.com/bridgs/portfolio",
+  "dependencies": {
+    "express": "^4.12.4",
+    "jquery": "^2.1.4",
+    "underscore": "^1.8.3"
+  }
+}
