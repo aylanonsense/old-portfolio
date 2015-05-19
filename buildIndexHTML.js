@@ -12,7 +12,7 @@ module.exports = function buildIndexHTML() {
 			id: project.id,
 			image: project.image,
 			width: cols * tileSize.width + (cols - 1) * tileSize.margin,
-			height: rows * tileSize.height + (cols - 1) * tileSize.margin
+			height: rows * tileSize.height + (rows - 1) * tileSize.margin
 		};
 	});
 	return underscore.template(rawHTML)({

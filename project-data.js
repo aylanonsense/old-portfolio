@@ -26,13 +26,13 @@ module.exports = [
 	},
 	{
 		id: 5,
-		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		shape: ["XX "," XX"],
+		image: "/img/3x2-Z.gif"
 	},
 	{
 		id: 6,
-		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		shape: ["X ","XX","X "],
+		image: "/img/2x3-T.gif"
 	},
 	{
 		id: 7,
@@ -61,8 +61,8 @@ module.exports = [
 	},
 	{
 		id: 12,
-		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		shape: ["X ","XX","X "],
+		image: "/img/2x3-T.gif"
 	},
 	{
 		id: 13,
@@ -76,8 +76,8 @@ module.exports = [
 	},
 	{
 		id: 15,
-		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		shape: ["XX"],
+		image: "/img/2x1.gif"
 	},
 	{
 		id: 16,
