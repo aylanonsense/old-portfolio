@@ -4,13 +4,18 @@ $(document).ready(function() {
 	var tileSize = <%= tileSize %>; //jshint ignore:line
 
 	//elements
-	var elements = projectData.map(function(project) {
+	var projectContainer = $('#projects');
+	var projectElements = projectData.map(function(project) {
 		return $('#project-' + project.id);
 	});
 
 	//whenever we change the width of the screen, we may need to re-squish everything together
+	function determineNumColumns() {
+		var width = projectContainer.width();
+		return Math.floor((width - tileSize.margin) / (tileSize.width + tileSize.margin));
+	}
 	function repositionShapes() {
-		var numColumns = 5; //TODO determine based on screen width, etc
+		var numColumns = determineNumColumns();
 
 		//let's create a grid of what space has been filled so far
 		var grid = {};
@@ -27,7 +32,7 @@ $(document).ready(function() {
 			numRows = Math.max(numRows, position.row + shapeHeight + 1);
 
 			//move the actual element
-			elements[projectData[i].id].css({
+			projectElements[projectData[i].id].css({
 				position: 'absolute',
 				top: position.row * tileSize.height + (position.row - 1) * tileSize.margin,
 				left: position.col * tileSize.width + (position.col - 1) * tileSize.margin
@@ -35,10 +40,9 @@ $(document).ready(function() {
 		}
 	}
 	function repositionShape(grid, numRows, numColumns, shape) {
-		var r, c, r2, c2;
 		var shapeWidth = Math.max.apply(Math, shape.map(function(row) { return row.length; }));
-		for(r = 0; r <= numRows; r++) {
-			for(c = 0; c <= numColumns - shapeWidth; c++) {
+		for(var r = 0; r <= numRows; r++) {
+			for(var c = 0; c <= numColumns - shapeWidth; c++) {
 				if(tryToFitShapeInPosition(grid, shape, r, c)) {
 					return { row: r, col: c };
 				}
@@ -69,5 +73,30 @@ $(document).ready(function() {
 		return true;
 	}
 
+	//reposition shape immediately when we visit the page
 	repositionShapes();
+
+	//whenever we resize the window we may need to reposition the shapes again
+	var resizeTimer = null;
+	var hasResizedRecently = false;
+	function resetResizeTimer() {
+		resizeTimer = setTimeout(function() {
+			if(hasResizedRecently) {
+				hasResizedRecently = false;
+				resetResizeTimer();
+			}
+			else {
+				resizeTimer = null;
+				repositionShapes();
+			}
+		}, 200);
+	}
+	$(window).on('resize', function() {
+		if(!hasResizedRecently) {
+			hasResizedRecently = true;
+			if(!resizeTimer) {
+				resetResizeTimer();
+			}
+		}
+	});
 });
