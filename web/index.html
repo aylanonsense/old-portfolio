@@ -3,9 +3,14 @@
 		<title>bridgs' portfolio</title>
 		<script type="text/javascript" src="/jquery.min.js"></script>
 		<script type="text/javascript" src="/script.js"></script>
-		<link rel="stylesheet" href="/style.css"></link>
+		<link rel="stylesheet" href="/css/styles.css"></link>
 	</head>
 	<body>
-		<%= bodyText %>
+		<section id="projects" class="clearfix">
+			<% projects.forEach(function(project) { %>
+				<article class="project <%- project.color %>" style="width:<%- project.width %>px;height:<%- project.height %>px;">
+				</article>
+			<% }); %>
+		</section>
 	</body>
 </html>

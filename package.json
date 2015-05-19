@@ -18,6 +18,7 @@
   "homepage": "https://github.com/bridgs/portfolio",
   "dependencies": {
     "express": "^4.12.4",
+    "express-less": "0.0.7",
     "jquery": "^2.1.4",
     "underscore": "^1.8.3"
   }

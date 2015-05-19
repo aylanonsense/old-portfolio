@@ -1,0 +1,39 @@
+@tile-width: 150px;
+@tile-height: 150px;
+@tile-margin: 5px;
+@min-columns: 2;
+@max-columns: 5;
+
+body {
+	background-color: #f0f0f0;
+}
+#projects {
+	min-width: @tile-width * @min-columns + @tile-margin * (@min-columns + 1);
+	max-width: @tile-width * @max-columns + @tile-margin * (@max-columns + 1);
+	margin: 0 auto;
+	padding: @tile-margin / 2;
+	background-color: #fff;
+	.project {
+		width: @tile-width;
+		height: @tile-height;
+		margin: @tile-margin / 2;
+		float: left;
+		&.red {
+			background-color: red;
+		}
+		&.green {
+			background-color: green;
+		}
+		&.blue {
+			background-color: blue;
+		}
+		&.yellow {
+			background-color: yellow;
+		}
+	}
+}
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}

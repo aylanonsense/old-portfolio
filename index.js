@@ -1,8 +1,12 @@
 var express = require('express');
+var expressLess = require('express-less');
 var app = express();
 
 //serve static web resources
 app.use(express.static(__dirname + '/web/static'));
+
+//serve css files
+app.use('/css', expressLess(__dirname + '/web/less'));
 
 //serve jquery
 app.get('/jquery.min.js', function(req, res) {
