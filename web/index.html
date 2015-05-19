@@ -8,7 +8,7 @@
 	<body>
 		<section id="projects" class="clearfix">
 			<% projects.forEach(function(project) { %>
-				<article class="project <%- project.color %>" style="width:<%- project.width %>px;height:<%- project.height %>px;">
+				<article id="project-<%- project.id %>" class="project" style="width:<%- project.width %>px;height:<%- project.height %>px;background-image:url('<%= project.image %>');">
 				</article>
 			<% }); %>
 		</section>

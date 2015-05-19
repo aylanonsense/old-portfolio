@@ -1,6 +1,6 @@
-@tile-width: 150px;
-@tile-height: 150px;
-@tile-margin: 5px;
+@tile-width: 50px;
+@tile-height: 50px;
+@tile-margin: 3px;
 @min-columns: 2;
 @max-columns: 5;
 
@@ -13,27 +13,22 @@ body {
 	margin: 0 auto;
 	padding: @tile-margin / 2;
 	background-color: #fff;
-	.project {
-		width: @tile-width;
-		height: @tile-height;
-		margin: @tile-margin / 2;
-		float: left;
-		&.red {
-			background-color: red;
-		}
-		&.green {
-			background-color: green;
-		}
-		&.blue {
-			background-color: blue;
-		}
-		&.yellow {
-			background-color: yellow;
-		}
-	}
+	position: relative;
 }
-.clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
+.project {
+	width: @tile-width;
+	height: @tile-height;
+	margin: @tile-margin / 2;
+	&.red {
+		background-color: red;
+	}
+	&.green {
+		background-color: green;
+	}
+	&.blue {
+		background-color: blue;
+	}
+	&.yellow {
+		background-color: yellow;
+	}
 }

@@ -1,18 +1,21 @@
 var fs = require('fs');
 var underscore = require('underscore');
-var rawProjectData = require('./projects');
+var projectData = require('./project-data');
+var tileSize = require('./tile-size');
 var rawHTML = fs.readFileSync('./web/index.html').toString();
-var tileProps = { width: 150, height: 150, margin: 5 };
 
 module.exports = function buildIndexHTML() {
-	var projects = rawProjectData.map(function(project) {
+	var processedProjectData = projectData.map(function(project) {
+		var cols = Math.max.apply(Math, project.shape.map(function(row) { return row.length; }));
+		var rows = project.shape.length;
 		return {
-			color: project.color,
-			width: project.colspan * tileProps.width + (project.colspan - 1) * tileProps.margin,
-			height: project.rowspan * tileProps.height + (project.rowspan - 1) * tileProps.margin
+			id: project.id,
+			image: project.image,
+			width: cols * tileSize.width + (cols - 1) * tileSize.margin,
+			height: rows * tileSize.height + (cols - 1) * tileSize.margin
 		};
 	});
 	return underscore.template(rawHTML)({
-		projects: projects
+		projects: processedProjectData
 	});
 };

@@ -1,1 +1,0 @@
-console.log("script.js got executed!");

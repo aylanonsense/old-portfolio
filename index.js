@@ -16,6 +16,14 @@ app.get('/jquery.min.map', function(req, res) {
 	res.sendFile(__dirname + '/node_modules/jquery/dist/jquery.min.map');
 });
 
+//serve script.js
+var scriptText = require('./buildScript')();
+app.get('/script.js', function(req, res) {
+	res.writeHeader(200, { "Content-Type": "text/javascript" });
+	res.write(scriptText);
+	res.end();
+});
+
 //serve index.html
 var indexHTML = require('./buildIndexHTML')();
 app.get('/', function(req, res) {
