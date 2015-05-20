@@ -14,7 +14,7 @@ module.exports = [
 	{
 		id: 2,
 		shape: [" X ","XXX"," X "],
-		tileImage: "/img/paradox-anomaly.gif",
+		tileImage: "/img/3x3-cross.gif",
 		tilePreviewImage: "/img/3x3-cross-desaturated.gif"
 	},
 	{
