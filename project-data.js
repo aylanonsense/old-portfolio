@@ -1,146 +1,179 @@
 module.exports = [
 	{
-		id: 0,
-		shape: ["X"],
-		tileImage: "/img/1x1.gif",
-		tilePreviewImage: "/img/1x1-desaturated.gif"
-	},
-	{
-		id: 1,
-		shape: ["X"],
-		tileImage: "/img/1x1-none.gif",
-		tilePreviewImage: "/img/1x1-none.gif"
-	},
-	{
-		id: 2,
-		shape: [" X ","XXX"," X "],
-		tileImage: "/img/3x3-cross.gif",
-		tilePreviewImage: "/img/3x3-cross-desaturated.gif"
-	},
-	{
-		id: 3,
-		shape: ["X"],
-		tileImage: "/img/1x1-none.gif",
-		tilePreviewImage: "/img/1x1-none.gif"
-	},
-	{
-		id: 4,
-		shape: ["XX"],
-		tileImage: "/img/2x1.gif",
-		tilePreviewImage: "/img/2x1-desaturated.gif"
-	},
-	{
-		id: 5,
-		shape: ["XX "," XX"],
-		tileImage: "/img/3x2-Z.gif",
-		tilePreviewImage: "/img/3x2-Z-desaturated.gif"
-	},
-	{
-		id: 6,
-		shape: ["X ","XX","X "],
-		tileImage: "/img/2x3-T.gif",
-		tilePreviewImage: "/img/2x3-T-desaturated.gif"
-	},
-	{
-		id: 7,
-		shape: ["X","X"],
-		tileImage: "/img/1x2.gif",
-		tilePreviewImage: "/img/1x2-desaturated.gif"
-	},
-	{
-		id: 8,
-		shape: ["X"],
-		tileImage: "/img/1x1-none.gif",
-		tilePreviewImage: "/img/1x1-none.gif"
-	},
-	{
-		id: 9,
-		shape: ["X","X"],
-		tileImage: "/img/1x2.gif",
-		tilePreviewImage: "/img/1x2-desaturated.gif"
-	},
-	{
-		id: 10,
-		shape: ["X"],
-		tileImage: "/img/1x1-none.gif",
-		tilePreviewImage: "/img/1x1-none.gif"
-	},
-	{
-		id: 11,
-		shape: ["X"],
-		tileImage: "/img/1x1-none.gif",
-		tilePreviewImage: "/img/1x1-none.gif"
-	},
-	{
-		id: 12,
-		shape: ["X ","XX","X "],
-		tileImage: "/img/2x3-T.gif",
-		tilePreviewImage: "/img/2x3-T-desaturated.gif"
-	},
-	{
-		id: 13,
-		shape: ["X"],
-		tileImage: "/img/1x1-none.gif",
-		tilePreviewImage: "/img/1x1-none.gif"
-	},
-	{
-		id: 14,
-		shape: ["X"],
-		tileImage: "/img/1x1-none.gif",
-		tilePreviewImage: "/img/1x1-none.gif"
-	},
-	{
-		id: 15,
-		shape: ["XX"],
-		tileImage: "/img/2x1.gif",
-		tilePreviewImage: "/img/2x1-desaturated.gif"
-	},
-	{
-		id: 16,
-		shape: ["X"],
-		tileImage: "/img/1x1-none.gif",
-		tilePreviewImage: "/img/1x1-none.gif"
-	},
-	{
-		id: 17,
-		shape: ["X"],
-		tileImage: "/img/1x1-none.gif",
-		tilePreviewImage: "/img/1x1-none.gif"
-	},
-	{
-		id: 18,
-		shape: [" XX","XX "],
-		tileImage: "/img/3x2-S.gif",
-		tilePreviewImage: "/img/3x2-S-desaturated.gif"
-	},
-	{
-		id: 19,
-		shape: ["X"],
-		tileImage: "/img/1x1-none.gif",
-		tilePreviewImage: "/img/1x1-none.gif"
-	},
-	{
-		id: 20,
-		shape: ["XX","XX"],
-		tileImage: "/img/2x2.gif",
-		tilePreviewImage: "/img/2x2-desaturated.gif"
-	},
-	{
-		id: 21,
-		shape: ["X"],
-		tileImage: "/img/1x1-none.gif",
-		tilePreviewImage: "/img/1x1-none.gif"
-	},
-	{
-		id: 22,
-		shape: ["X"],
-		tileImage: "/img/1x1.gif",
-		tilePreviewImage: "/img/1x1-desaturated.gif"
-	},
-	{
-		id: 23,
-		shape: ["X"],
-		tileImage: "/img/1x1-none.gif",
-		tilePreviewImage: "/img/1x1-none.gif"
+		id: "paradox-anomaly",
+		title: null,
+		description: null,
+		medium: "Node.js",
+		timePeriod: "December 2014",
+		repoUrl: "https://github.com/bridgs/paradox-anomaly",
+		grid: {
+			previewImageUrl: "/img/paradox-anomaly/sepia.gif",
+			imageUrl: "/img/paradox-anomaly/animated.gif",
+			shape: ["XXXX","XXXX","XXXX","XXXX","XXXX"]
+		},
+		image: {
+			url: null,
+			width: null,
+			height: null
+		},
+		iframe: {
+			url: null,
+			width: null,
+			height: null
+		}
+	}, {
+		id: "boss-rush-game",
+		title: null,
+		description: null,
+		medium: "Node.js",
+		timePeriod: "August to November 2014",
+		repoUrl: "https://github.com/bridgs/boss-rush-game",
+		grid: {
+			previewImageUrl: "/img/boss-rush-game/sepia.gif",
+			imageUrl: "/img/boss-rush-game/animated.gif",
+			shape: ["XXXXXX","XXXXXX","XXXXXX"]
+		},
+		image: {
+			url: null,
+			width: null,
+			height: null
+		},
+		iframe: {
+			url: null,
+			width: null,
+			height: null
+		}
+	}, {
+		id: "spider-game",
+		title: null,
+		description: null,
+		medium: "Node.js",
+		timePeriod: "September 2014",
+		repoUrl: "https://github.com/bridgs/spider-game",
+		grid: {
+			previewImageUrl: "/img/spider-game/sepia.gif",
+			imageUrl: "/img/spider-game/animated.gif",
+			shape: ["XX","XX"]
+		},
+		image: {
+			url: null,
+			width: null,
+			height: null
+		},
+		iframe: {
+			url: null,
+			width: null,
+			height: null
+		}
+	}, {
+		id: "archery-game",
+		title: null,
+		description: null,
+		medium: "Node.js",
+		timePeriod: "May 2014",
+		repoUrl: "https://github.com/bridgs/archery-game",
+		grid: {
+			previewImageUrl: "/img/archery-game/sepia.gif",
+			imageUrl: "/img/archery-game/animated.gif",
+			shape: ["XX","XX","XX","XX","XX","XX"]
+		},
+		image: {
+			url: null,
+			width: null,
+			height: null
+		},
+		iframe: {
+			url: null,
+			width: null,
+			height: null
+		}
+	}, {
+		id: "space-team-galaxy-explorer",
+		title: null,
+		description: null,
+		medium: "Node.js",
+		timePeriod: "November 2014",
+		repoUrl: "https://github.com/bridgs/space-team-galaxy-explorer",
+		grid: {
+			previewImageUrl: "/img/space-team-galaxy-explorer/sepia.gif",
+			imageUrl: "/img/space-team-galaxy-explorer/animated.gif",
+			shape: ["XXXXXX","XXXXXX","XXXXXX","XXXXXX"]
+		},
+		image: {
+			url: null,
+			width: null,
+			height: null
+		},
+		iframe: {
+			url: null,
+			width: null,
+			height: null
+		}
+	}, {
+		id: "breakout-ball",
+		title: null,
+		description: null,
+		medium: "Node.js",
+		timePeriod: "January 2015",
+		repoUrl: "https://github.com/bridgs/breakout-ball",
+		grid: {
+			previewImageUrl: "/img/breakout-ball/sepia.gif",
+			imageUrl: "/img/breakout-ball/animated.gif",
+			shape: ["XX","XX"]
+		},
+		image: {
+			url: null,
+			width: null,
+			height: null
+		},
+		iframe: {
+			url: null,
+			width: null,
+			height: null
+		}
+	}, {
+		id: "alchemy-drop",
+		title: null,
+		description: null,
+		medium: "Node.js",
+		timePeriod: "September 2013",
+		repoUrl: "https://github.com/bridgs/alchemy-drop",
+		grid: {
+			previewImageUrl: "/img/alchemy-drop/sepia.gif",
+			imageUrl: "/img/alchemy-drop/animated.gif",
+			shape: ["XX","XX"]
+		},
+		image: {
+			url: null,
+			width: null,
+			height: null
+		},
+		iframe: {
+			url: null,
+			width: null,
+			height: null
+		}
+	}, {
+		id: "minisnake",
+		title: null,
+		description: null,
+		medium: "Node.js",
+		timePeriod: "September 2014",
+		repoUrl: "https://github.com/bridgs/minisnake",
+		grid: {
+			previewImageUrl: "/img/minisnake/sepia.gif",
+			imageUrl: "/img/minisnake/animated.gif",
+			shape: ["XX","XX"]
+		},
+		image: {
+			url: null,
+			width: null,
+			height: null
+		},
+		iframe: {
+			url: null,
+			width: null,
+			height: null
+		}
 	}
 ];

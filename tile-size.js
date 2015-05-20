@@ -1,5 +1,5 @@
 module.exports = {
-	width: 90,
-	height: 90,
-	margin: 10
+	width: 75,
+	height: 75,
+	margin: 0
 };

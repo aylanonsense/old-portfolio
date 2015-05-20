@@ -1,13 +1,13 @@
 $(document).ready(function() {
 	//data
-	var projectData = <%= projectData %>; //jshint ignore:line
+	var projects = <%= projects %>; //jshint ignore:line
 	var tileSize = <%= tileSize %>; //jshint ignore:line
 
 	//elements
 	var body = $(document.body);
 	var projectContainer = $('#projects');
 	var projectElements = {};
-	projectData.forEach(function(project) {
+	projects.forEach(function(project) {
 		//find the project's shape element
 		var element = $('#project-' + project.id);
 		var img = element.find('img');
@@ -51,14 +51,14 @@ $(document).ready(function() {
 
 		//for each project/shape, find the earliest place where it fits
 		var numRows = 1;
-		for(i = 0; i < projectData.length; i++) {
-			var shape = projectData[i].shape;
+		for(i = 0; i < projects.length; i++) {
+			var shape = projects[i].grid.shape;
 			var position = repositionShape(grid, numRows, numColumns, shape);
 			var shapeHeight = shape.length;
 			numRows = Math.max(numRows, position.row + shapeHeight + 1);
 
 			//move the actual element
-			projectElements[projectData[i].id].css({
+			projectElements[projects[i].id].css({
 				position: 'absolute',
 				top: position.row * tileSize.height + (position.row - 1) * tileSize.margin,
 				left: position.col * tileSize.width + (position.col - 1) * tileSize.margin
