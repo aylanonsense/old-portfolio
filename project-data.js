@@ -175,5 +175,27 @@ module.exports = [
 			width: null,
 			height: null
 		}
+	}, {
+		id: "grapple-game",
+		title: null,
+		description: null,
+		medium: "Node.js",
+		timePeriod: "June 2014 to March 2015",
+		repoUrl: "https://github.com/bridgs/grapple-game",
+		grid: {
+			previewImageUrl: "/img/grapple-game/sepia.gif",
+			imageUrl: "/img/grapple-game/animated.gif",
+			shape: ["XXXXX","XXXXX","XXXXX","XXXXX","XXXXX"]
+		},
+		image: {
+			url: null,
+			width: null,
+			height: null
+		},
+		iframe: {
+			url: null,
+			width: null,
+			height: null
+		}
 	}
 ];
