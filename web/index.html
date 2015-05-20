@@ -6,9 +6,15 @@
 		<link rel="stylesheet" href="/css/styles.css"></link>
 	</head>
 	<body>
-		<section id="projects" class="clearfix">
+		<section id="projects">
 			<% projects.forEach(function(project) { %>
-				<article id="project-<%- project.id %>" class="project" style="width:<%- project.width %>px;height:<%- project.height %>px;background-image:url('<%= project.image %>');">
+				<article id="project-<%- project.id %>" class="project" style="width:<%- project.width %>px;height:<%- project.height %>px;background-image:url('<%- project.tilePreviewImage %>');background-size: <%- project.width - tileSize.margin %>px <%- project.height - tileSize.margin %>px;">
+					<img src="<%= project.tileImage %>" width="<%- project.width - tileSize.margin %>px" height="<%- project.height - tileSize.margin %>px"></img>
+					<div class="hitbox">
+						<% project.hitbox.forEach(function(part) { %>
+							<div class="hitbox-part" style="top:<%- part.y %>px;left:<%- part.x %>px;width:<%- part.width %>px;height:<%- part.height %>px;"></div>
+						<% }); %>
+					</map>
 				</article>
 			<% }); %>
 		</section>

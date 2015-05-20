@@ -1,23 +1,38 @@
-@tile-width: 150px;
-@tile-height: 150px;
-@tile-margin: 20px;
-@min-columns: 3;
-@max-columns: 5;
+@tile-width: 90px;
+@tile-height: 90px;
+@tile-margin: 10px;
 
+html, body, #projects {
+	height: 100%;
+}
 body {
 	background-color: #fff;
 }
 #projects {
-	min-width: @tile-width * @min-columns + @tile-margin * (@min-columns + 1);
-	max-width: @tile-width * @max-columns + @tile-margin * (@max-columns + 1);
 	margin: 0 auto;
-	padding: @tile-margin / 2;
-	background-color: #f0f0f0;
+	padding: 0;
 	position: relative;
 }
 .project {
-	width: @tile-width;
-	height: @tile-height;
-	margin: @tile-margin / 2;
-	background-size: cover;
+	position: relative;
+    background-repeat: no-repeat;
+    background-position: @tile-margin / 2 @tile-margin / 2;
+	.hitbox {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		.hitbox-part {
+			z-index: 2;
+			position: absolute;
+			cursor: pointer;
+		}
+	}
+	img {
+		position: absolute;
+		top: @tile-margin / 2;
+		left: @tile-margin / 2;
+		opacity: 0.0;
+	}
 }

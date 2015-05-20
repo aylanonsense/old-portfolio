@@ -2,121 +2,145 @@ module.exports = [
 	{
 		id: 0,
 		shape: ["X"],
-		image: "/img/1x1.gif"
+		tileImage: "/img/1x1.gif",
+		tilePreviewImage: "/img/1x1-desaturated.gif"
 	},
 	{
 		id: 1,
 		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		tileImage: "/img/1x1-none.gif",
+		tilePreviewImage: "/img/1x1-none.gif"
 	},
 	{
 		id: 2,
 		shape: [" X ","XXX"," X "],
-		image: "/img/3x3-cross.gif"
+		tileImage: "/img/paradox-anomaly.gif",
+		tilePreviewImage: "/img/3x3-cross-desaturated.gif"
 	},
 	{
 		id: 3,
 		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		tileImage: "/img/1x1-none.gif",
+		tilePreviewImage: "/img/1x1-none.gif"
 	},
 	{
 		id: 4,
-		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		shape: ["XX"],
+		tileImage: "/img/2x1.gif",
+		tilePreviewImage: "/img/2x1-desaturated.gif"
 	},
 	{
 		id: 5,
 		shape: ["XX "," XX"],
-		image: "/img/3x2-Z.gif"
+		tileImage: "/img/3x2-Z.gif",
+		tilePreviewImage: "/img/3x2-Z-desaturated.gif"
 	},
 	{
 		id: 6,
 		shape: ["X ","XX","X "],
-		image: "/img/2x3-T.gif"
+		tileImage: "/img/2x3-T.gif",
+		tilePreviewImage: "/img/2x3-T-desaturated.gif"
 	},
 	{
 		id: 7,
-		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		shape: ["X","X"],
+		tileImage: "/img/1x2.gif",
+		tilePreviewImage: "/img/1x2-desaturated.gif"
 	},
 	{
 		id: 8,
 		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		tileImage: "/img/1x1-none.gif",
+		tilePreviewImage: "/img/1x1-none.gif"
 	},
 	{
 		id: 9,
-		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		shape: ["X","X"],
+		tileImage: "/img/1x2.gif",
+		tilePreviewImage: "/img/1x2-desaturated.gif"
 	},
 	{
 		id: 10,
 		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		tileImage: "/img/1x1-none.gif",
+		tilePreviewImage: "/img/1x1-none.gif"
 	},
 	{
 		id: 11,
 		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		tileImage: "/img/1x1-none.gif",
+		tilePreviewImage: "/img/1x1-none.gif"
 	},
 	{
 		id: 12,
 		shape: ["X ","XX","X "],
-		image: "/img/2x3-T.gif"
+		tileImage: "/img/2x3-T.gif",
+		tilePreviewImage: "/img/2x3-T-desaturated.gif"
 	},
 	{
 		id: 13,
 		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		tileImage: "/img/1x1-none.gif",
+		tilePreviewImage: "/img/1x1-none.gif"
 	},
 	{
 		id: 14,
 		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		tileImage: "/img/1x1-none.gif",
+		tilePreviewImage: "/img/1x1-none.gif"
 	},
 	{
 		id: 15,
 		shape: ["XX"],
-		image: "/img/2x1.gif"
+		tileImage: "/img/2x1.gif",
+		tilePreviewImage: "/img/2x1-desaturated.gif"
 	},
 	{
 		id: 16,
 		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		tileImage: "/img/1x1-none.gif",
+		tilePreviewImage: "/img/1x1-none.gif"
 	},
 	{
 		id: 17,
 		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		tileImage: "/img/1x1-none.gif",
+		tilePreviewImage: "/img/1x1-none.gif"
 	},
 	{
 		id: 18,
-		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		shape: [" XX","XX "],
+		tileImage: "/img/3x2-S.gif",
+		tilePreviewImage: "/img/3x2-S-desaturated.gif"
 	},
 	{
 		id: 19,
 		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		tileImage: "/img/1x1-none.gif",
+		tilePreviewImage: "/img/1x1-none.gif"
 	},
 	{
 		id: 20,
-		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		shape: ["XX","XX"],
+		tileImage: "/img/2x2.gif",
+		tilePreviewImage: "/img/2x2-desaturated.gif"
 	},
 	{
 		id: 21,
 		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		tileImage: "/img/1x1-none.gif",
+		tilePreviewImage: "/img/1x1-none.gif"
 	},
 	{
 		id: 22,
 		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		tileImage: "/img/1x1.gif",
+		tilePreviewImage: "/img/1x1-desaturated.gif"
 	},
 	{
 		id: 23,
 		shape: ["X"],
-		image: "/img/1x1-none.gif"
+		tileImage: "/img/1x1-none.gif",
+		tilePreviewImage: "/img/1x1-none.gif"
 	}
 ];

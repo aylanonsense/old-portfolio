@@ -4,18 +4,44 @@ $(document).ready(function() {
 	var tileSize = <%= tileSize %>; //jshint ignore:line
 
 	//elements
+	var body = $(document.body);
 	var projectContainer = $('#projects');
-	var projectElements = projectData.map(function(project) {
-		return $('#project-' + project.id);
+	var projectElements = {};
+	projectData.forEach(function(project) {
+		//find the project's shape element
+		var element = $('#project-' + project.id);
+		var img = element.find('img');
+
+		//when the user hovers over the shape, it fades in
+		element.find('.hitbox')
+			.on('mouseenter', function() {
+				img.clearQueue().fadeTo(500, 1.0);
+			})
+			.on('mouseleave', function() {
+				img.clearQueue().fadeTo(500, 0.0);
+			})
+			.on('click', function() {
+				console.log("CLICK:", project.id);
+			});
+
+		//store element in lookup table
+		projectElements[project.id] = element;
 	});
 
 	//whenever we change the width of the screen, we may need to re-squish everything together
-	function determineNumColumns() {
-		var width = projectContainer.width();
-		return Math.floor((width - tileSize.margin) / (tileSize.width + tileSize.margin));
+	var numColumnsCurrentlyRendered = null;
+	function getWindowSizeInColumns() {
+		return Math.max(3, Math.floor((body.width() - tileSize.margin) /
+			(tileSize.width + tileSize.margin)));
 	}
 	function repositionShapes() {
-		var numColumns = determineNumColumns();
+		//we only need to reposition the shapes if we changes the number of columns displayed
+		var numColumns = getWindowSizeInColumns();
+		if(numColumnsCurrentlyRendered === numColumns) {
+			return;
+		}
+		numColumnsCurrentlyRendered = numColumns;
+		projectContainer.width(tileSize.margin + numColumns * (tileSize.width + tileSize.margin));
 
 		//let's create a grid of what space has been filled so far
 		var grid = {};
@@ -89,7 +115,7 @@ $(document).ready(function() {
 				resizeTimer = null;
 				repositionShapes();
 			}
-		}, 200);
+		}, 150);
 	}
 	$(window).on('resize', function() {
 		if(!hasResizedRecently) {
