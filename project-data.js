@@ -157,7 +157,7 @@ module.exports = [
 		id: "minisnake",
 		title: null,
 		description: null,
-		medium: "Node.js",
+		medium: "JavaScript",
 		timePeriod: "September 2014",
 		repoUrl: "https://github.com/bridgs/minisnake",
 		grid: {
@@ -185,7 +185,51 @@ module.exports = [
 		grid: {
 			previewImageUrl: "/img/grapple-game/sepia.gif",
 			imageUrl: "/img/grapple-game/animated.gif",
-			shape: ["XXXXX","XXXXX","XXXXX","XXXXX","XXXXX"]
+			shape: ["XXXX","XXXX","XXXX","XXXX"]
+		},
+		image: {
+			url: null,
+			width: null,
+			height: null
+		},
+		iframe: {
+			url: null,
+			width: null,
+			height: null
+		}
+	}, {
+		id: "tranquilime",
+		title: null,
+		description: null,
+		medium: "Node.js",
+		timePeriod: "September 2013",
+		repoUrl: "https://github.com/bridgs/tranquilime",
+		grid: {
+			previewImageUrl: "/img/tranquilime/sepia.gif",
+			imageUrl: "/img/tranquilime/animated.gif",
+			shape: ["XXXX","XXXX"]
+		},
+		image: {
+			url: null,
+			width: null,
+			height: null
+		},
+		iframe: {
+			url: null,
+			width: null,
+			height: null
+		}
+	}, {
+		id: "processing-sketchbook",
+		title: null,
+		description: null,
+		medium: "Processing",
+		timePeriod: "February 2015",
+		repoUrl: "https://github.com/bridgs/processing-sketchbook",
+		grid: {
+			previewImageUrl: "/img/processing-sketchbook/sepia.gif",
+			imageUrl: "/img/processing-sketchbook/animated.gif",
+			shape: ["XX","XX"]
 		},
 		image: {
 			url: null,
