@@ -14,7 +14,7 @@ module.exports = function buildIndexHTML() {
 			timePeriod: project.timePeriod,
 			repoUrl: project.repoUrl,
 			grid: {
-				shape: project.grid.shape
+				tiles: project.grid.tiles
 			},
 			content: {
 				type: project.content.type,

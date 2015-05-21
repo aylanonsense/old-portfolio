@@ -3,148 +3,166 @@ $(document).ready(function() {
 	var projects = <%= projects %>; //jshint ignore:line
 	var tileSize = <%= tileSize %>; //jshint ignore:line
 
-	//elements
+	//constants
+	var MIN_COLUMNS = 4;
+	var RESIZE_DELAY = 250;
+	var DIALOG_FADE_IN_TIME = 500;
+	var DIALOG_FADE_OUT_TIME = 500;
+	var IMAGE_FADE_IN_TIME = 500;
+	var IMAGE_FADE_OUT_TIME = 500;
+
+	//gather jQuery references to elements
 	var body = $(document.body);
-	var projectContainer = $('#projects');
-	var projectElements = {};
+	var shapeContainer = $('#shapes');
 	var dialogScreen = $('#dialog-screen');
 	var dialog = $('#dialog').hide();
 	projects.forEach(function(project) {
-		//find the project's shape element
-		var element = $('#project-' + project.id);
-		var img = element.find('img');
+		project.shape = $('#shape-' + project.id);
+	});
 
-		//when the user hovers over the shape, it fades in
-		element.find('.hitbox')
+	//bind events when a shape is moused over or clicked
+	projects.forEach(function(project) {
+		var img = project.shape.find('img');
+		project.shape
+			//on hover, fade in the saturated/animated image
 			.on('mouseenter', function() {
-				img.clearQueue().fadeTo(500, 1.0);
+				img.stop().fadeTo(Math.floor(IMAGE_FADE_IN_TIME * (1.0 - +img.css('opacity'))), 1.0);
 			})
+			//when the mouse leaves the shape, fade out the saturated/animated image
 			.on('mouseleave', function() {
-				img.clearQueue().fadeTo(500, 0.0);
+				img.stop().fadeTo(Math.floor(IMAGE_FADE_OUT_TIME * +img.css('opacity')), 0.0);
 			})
+			//when a shape is clicked, open the project dialog
 			.on('click', function() {
 				openDialog(project);
 			});
-
-		//store element in lookup table
-		projectElements[project.id] = element;
 	});
 
-	//when the dialog screen is clicked it closes the dialog
+	//when you click in the dark area around the dialog, close the dialog
 	dialogScreen.on('click', function() {
-		//TODO prevent double-clicks from immediately closing the dialog
-		hideDialog();
+		closeDialog();
 	});
 
-	//when the user clicks on a shape, it opens a dialog
-	function openDialog(project) {
-		dialogScreen.fadeTo(500, 0.5);
-		dialog.show().clearQueue().animate({
-			opacity: 1.0,
-			width: project.content.width || 50,
-			height: project.content.height || 50
-		}, 1000);
+	//when the page is resized, we may need to reposition all of the shapes
+	var resizeTimer = null;
+	var timeOfLastResizeEvent = null;
+	function resetResizeTimer(delay) {
+		timeOfLastResizeEvent = null;
+		resizeTimer = setTimeout(function() {
+			if(timeOfLastResizeEvent === null) {
+				resizeTimer = null;
+				//page resizing has settled down -- reposition the shapes!
+				repositionShapes();
+			}
+			else {
+				resetResizeTimer(RESIZE_DELAY + timeOfLastResizeEvent - Date.now());
+			}
+		}, delay);
 	}
-	function hideDialog() {
-		dialogScreen.clearQueue().hide();
-		dialog.clearQueue().hide();
-	}
+	$(window).on('resize', function() {
+		if(!resizeTimer) {
+			resetResizeTimer(RESIZE_DELAY);
+		}
+		else {
+			timeOfLastResizeEvent = Date.now();
+		}
+	});
 
-	//whenever we change the width of the screen, we may need to re-squish everything together
+	//reposition shapes such that they all fit together nice and pretty without any gaps
 	var numColumnsCurrentlyRendered = null;
-	function getWindowSizeInColumns() {
-		return Math.max(3, Math.floor((body.width() - tileSize.margin) /
-			(tileSize.width + tileSize.margin)));
-	}
 	function repositionShapes() {
-		//we only need to reposition the shapes if we changes the number of columns displayed
-		var numColumns = getWindowSizeInColumns();
+		//we only need to reposition the shapes if we change the number of columns displayed
+		var numColumns = Math.max(MIN_COLUMNS, Math.floor((body.width() - tileSize.margin) /
+			(tileSize.width + tileSize.margin)));
 		if(numColumnsCurrentlyRendered === numColumns) {
 			return;
 		}
 		numColumnsCurrentlyRendered = numColumns;
-		projectContainer.width(tileSize.margin + numColumns * (tileSize.width + tileSize.margin));
 
-		//let's create a grid of what space has been filled so far
+		//resize body to make space for repositionEd shapes
+		shapeContainer.width(tileSize.margin + numColumns * (tileSize.width + tileSize.margin));
+
+		//let's create a grid of what tiles HAVE been filled so far
+		var numRows = 1;
 		var grid = {};
 		for(var c = 0; c < numColumns; c++) {
 			grid[c] = {};
 		}
 
-		//for each project/shape, find the earliest place where it fits
-		var numRows = 1;
-		for(i = 0; i < projects.length; i++) {
-			var shape = projects[i].grid.shape;
-			var position = repositionShape(grid, numRows, numColumns, shape);
-			var shapeHeight = shape.length;
+		//for each project/shape, find the earliest spot where it fits
+		for(var i = 0; i < projects.length; i++) {
+			//find a spot for the shape
+			var tiles = projects[i].grid.tiles;
+			var position = findPositionForTiles(tiles, grid, numRows, numColumns);
+			var shapeHeight = tiles.length;
 			numRows = Math.max(numRows, position.row + shapeHeight + 1);
 
-			//move the actual element
-			projectElements[projects[i].id].css({
+			//move the shape
+			projects[i].shape.css({
 				position: 'absolute',
 				top: position.row * tileSize.height + (position.row - 1) * tileSize.margin,
 				left: position.col * tileSize.width + (position.col - 1) * tileSize.margin
 			});
 		}
 	}
-	function repositionShape(grid, numRows, numColumns, shape) {
-		var shapeWidth = Math.max.apply(Math, shape.map(function(row) { return row.length; }));
+	function findPositionForTiles(tiles, grid, numRows, numColumns) {
+		var shapeWidth = Math.max.apply(Math, tiles.map(function(row) { return row.length; }));
 		for(var r = 0; r <= numRows; r++) {
 			for(var c = 0; c <= numColumns - shapeWidth; c++) {
-				if(tryToFitShapeInPosition(grid, shape, r, c)) {
+				if(tryToFitTilesIntoPosition(tiles, grid, r, c)) {
 					return { row: r, col: c };
 				}
 			}
 		}
-		//we shouldn't be able to get here without returning
+		//if we couldn't find a spot for the shape it means it's too wide to fit
+		return { row: numRows, col: 0 };
 	}
-	function tryToFitShapeInPosition(grid, shape, r, c) {
-		var r2, c2;
-		for(r2 = 0; r2 < shape.length; r2++) {
-			for(c2 = 0; c2 < shape[r2].length; c2++) {
-				//make sure the shape can fit
-				if(shape[r2][c2] !== ' ' && grid[c + c2][r + r2]) {
+	function tryToFitTilesIntoPosition(tiles, grid, row, col) {
+		var r, c;
+		//the tiles only fit if all of the grid's spaces they would go in are empty
+		for(r = 0; r < tiles.length; r++) {
+			for(c = 0; c < tiles[r].length; c++) {
+				if(tiles[r][c] !== ' ' && grid[col + c][row + r]) {
 					return false;
 				}
 			}
 		}
-		//if we've gotten here then [r,c] is a valid position!
-		//mark it as such in the grid
-		for(r2 = 0; r2 < shape.length; r2++) {
-			for(c2 = 0; c2 < shape[r2].length; c2++) {
-				//make sure the shape can fit
-				if(shape[r2][c2] !== ' ') {
-					grid[c + c2][r + r2] = true;
+		//if the tiles do fit, mark them off in the grid as no longer being empty
+		for(r = 0; r < tiles.length; r++) {
+			for(c = 0; c < tiles[r].length; c++) {
+				//make sure the tiles can fit
+				if(tiles[r][c] !== ' ') {
+					grid[col + c][row + r] = true;
 				}
 			}
 		}
 		return true;
 	}
 
-	//reposition shape immediately when we visit the page
-	repositionShapes();
-
-	//whenever we resize the window we may need to reposition the shapes again
-	var resizeTimer = null;
-	var hasResizedRecently = false;
-	function resetResizeTimer() {
-		resizeTimer = setTimeout(function() {
-			if(hasResizedRecently) {
-				hasResizedRecently = false;
-				resetResizeTimer();
-			}
-			else {
-				resizeTimer = null;
-				repositionShapes();
-			}
-		}, 150);
-	}
-	$(window).on('resize', function() {
-		if(!hasResizedRecently) {
-			hasResizedRecently = true;
-			if(!resizeTimer) {
-				resetResizeTimer();
-			}
+	//open the dialog and display a particular project
+	var dialogState = 'closed';
+	function openDialog(project) {
+		if(dialogState === 'closed') {
+			dialogState = 'opening';
+			dialogScreen.show().fadeTo(DIALOG_FADE_IN_TIME, 0.5);
+			dialog.show().fadeTo(DIALOG_FADE_IN_TIME, 1.0, function() {
+				dialogState = 'open';
+			});
 		}
-	});
+	}
+	function closeDialog() {
+		if(dialogState === 'open') {
+			dialogState = 'closing';
+			dialogScreen.fadeTo(DIALOG_FADE_OUT_TIME, 0.0, function() {
+				dialogScreen.hide();
+			});
+			dialog.fadeTo(DIALOG_FADE_OUT_TIME, 0.0, function() {
+				dialog.hide();
+				dialogState = 'closed';
+			});
+		}
+	}
+
+	//when the page loads we reposition shapes into a grid immediately
+	repositionShapes();
 });

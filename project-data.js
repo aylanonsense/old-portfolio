@@ -9,7 +9,7 @@ module.exports = [
 		grid: {
 			previewImageUrl: "/img/paradox-anomaly/sepia.gif",
 			imageUrl: "/img/paradox-anomaly/animated.gif",
-			shape: ["XXXX","XXXX","XXXX","XXXX","XXXX"]
+			tiles: ["XXXX","XXXX","XXXX","XXXX","XXXX"]
 		},
 		content: {
 			type: null,
@@ -27,7 +27,7 @@ module.exports = [
 		grid: {
 			previewImageUrl: "/img/boss-rush-game/sepia.gif",
 			imageUrl: "/img/boss-rush-game/animated.gif",
-			shape: ["XXXXXX","XXXXXX","XXXXXX"]
+			tiles: ["XXXXXX","XXXXXX","XXXXXX"]
 		},
 		content: {
 			type: "iframe",
@@ -45,7 +45,7 @@ module.exports = [
 		grid: {
 			previewImageUrl: "/img/spider-game/sepia.gif",
 			imageUrl: "/img/spider-game/animated.gif",
-			shape: ["XX","XX"]
+			tiles: ["XX","XX"]
 		},
 		content: {
 			type: null,
@@ -63,7 +63,7 @@ module.exports = [
 		grid: {
 			previewImageUrl: "/img/archery-game/sepia.gif",
 			imageUrl: "/img/archery-game/animated.gif",
-			shape: ["XX","XX","XX","XX","XX","XX"]
+			tiles: ["XX","XX","XX","XX","XX","XX"]
 		},
 		content: {
 			type: null,
@@ -81,7 +81,7 @@ module.exports = [
 		grid: {
 			previewImageUrl: "/img/space-team-galaxy-explorer/sepia.gif",
 			imageUrl: "/img/space-team-galaxy-explorer/animated.gif",
-			shape: ["XXXXXX","XXXXXX","XXXXXX","XXXXXX"]
+			tiles: ["XXXXXX","XXXXXX","XXXXXX","XXXXXX"]
 		},
 		content: {
 			type: null,
@@ -99,7 +99,7 @@ module.exports = [
 		grid: {
 			previewImageUrl: "/img/breakout-ball/sepia.gif",
 			imageUrl: "/img/breakout-ball/animated.gif",
-			shape: ["XX","XX"]
+			tiles: ["XX","XX"]
 		},
 		content: {
 			type: null,
@@ -117,7 +117,7 @@ module.exports = [
 		grid: {
 			previewImageUrl: "/img/alchemy-drop/sepia.gif",
 			imageUrl: "/img/alchemy-drop/animated.gif",
-			shape: ["XX","XX"]
+			tiles: ["XX","XX"]
 		},
 		content: {
 			type: null,
@@ -135,7 +135,7 @@ module.exports = [
 		grid: {
 			previewImageUrl: "/img/minisnake/sepia.gif",
 			imageUrl: "/img/minisnake/animated.gif",
-			shape: ["XX","XX"]
+			tiles: ["XX","XX"]
 		},
 		content: {
 			type: null,
@@ -153,7 +153,7 @@ module.exports = [
 		grid: {
 			previewImageUrl: "/img/grapple-game/sepia.gif",
 			imageUrl: "/img/grapple-game/animated.gif",
-			shape: ["XXXX","XXXX","XXXX","XXXX"]
+			tiles: ["XXXX","XXXX","XXXX","XXXX"]
 		},
 		content: {
 			type: null,
@@ -171,7 +171,7 @@ module.exports = [
 		grid: {
 			previewImageUrl: "/img/tranquilime/sepia.gif",
 			imageUrl: "/img/tranquilime/animated.gif",
-			shape: ["XXXX","XXXX"]
+			tiles: ["XXXX","XXXX"]
 		},
 		content: {
 			type: null,
@@ -189,7 +189,7 @@ module.exports = [
 		grid: {
 			previewImageUrl: "/img/processing-sketchbook/sepia.gif",
 			imageUrl: "/img/processing-sketchbook/animated.gif",
-			shape: ["XX","XX"]
+			tiles: ["XX","XX"]
 		},
 		content: {
 			type: null,
@@ -207,7 +207,7 @@ module.exports = [
 		grid: {
 			previewImageUrl: "/img/zombie-aflockalypse/sepia.gif",
 			imageUrl: "/img/zombie-aflockalypse/animated.gif",
-			shape: ["XXXX","XXXX","XXXX","XXXX"]
+			tiles: ["XXXX","XXXX","XXXX","XXXX"]
 		},
 		content: {
 			type: null,

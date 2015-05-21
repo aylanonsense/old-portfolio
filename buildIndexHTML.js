@@ -6,13 +6,13 @@ var rawHTML = fs.readFileSync('./web/index.html').toString();
 
 module.exports = function buildIndexHTML() {
 	var processedProjectData = projectData.map(function(project) {
-		var cols = Math.max.apply(Math, project.grid.shape.map(function(row) { return row.length; }));
-		var rows = project.grid.shape.length;
-		var hitbox = [];
-		for(var r = 0; r < project.grid.shape.length; r++) {
-			for(var c = 0; c < project.grid.shape[r].length; c++) {
-				if(project.grid.shape[r][c] !== ' ') {
-					hitbox.push({
+		var cols = Math.max.apply(Math, project.grid.tiles.map(function(row) { return row.length; }));
+		var rows = project.grid.tiles.length;
+		var tiles = [];
+		for(var r = 0; r < project.grid.tiles.length; r++) {
+			for(var c = 0; c < project.grid.tiles[r].length; c++) {
+				if(project.grid.tiles[r][c] !== ' ') {
+					tiles.push({
 						x: c * (tileSize.width + tileSize.margin),
 						y: r * (tileSize.height + tileSize.margin),
 						width: tileSize.width + tileSize.margin,
@@ -25,9 +25,9 @@ module.exports = function buildIndexHTML() {
 			id: project.id,
 			grid: {
 				previewImageUrl: project.grid.previewImageUrl,
-				imageUrl: project.grid.imageUrl
+				imageUrl: project.grid.imageUrl,
+				tiles: tiles
 			},
-			hitbox: hitbox,
 			width: cols * (tileSize.width + tileSize.margin),
 			height: rows * (tileSize.height + tileSize.margin)
 		};
