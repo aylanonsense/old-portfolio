@@ -11,12 +11,8 @@ module.exports = [
 			imageUrl: "/img/paradox-anomaly/animated.gif",
 			shape: ["XXXX","XXXX","XXXX","XXXX","XXXX"]
 		},
-		image: {
-			url: null,
-			width: null,
-			height: null
-		},
-		iframe: {
+		content: {
+			type: null,
 			url: null,
 			width: null,
 			height: null
@@ -33,15 +29,11 @@ module.exports = [
 			imageUrl: "/img/boss-rush-game/animated.gif",
 			shape: ["XXXXXX","XXXXXX","XXXXXX"]
 		},
-		image: {
-			url: null,
-			width: null,
-			height: null
-		},
-		iframe: {
-			url: null,
-			width: null,
-			height: null
+		content: {
+			type: "iframe",
+			url: "http://li1246-61.members.linode.com:3003/",
+			width: 800,
+			height: 600
 		}
 	}, {
 		id: "spider-game",
@@ -55,12 +47,8 @@ module.exports = [
 			imageUrl: "/img/spider-game/animated.gif",
 			shape: ["XX","XX"]
 		},
-		image: {
-			url: null,
-			width: null,
-			height: null
-		},
-		iframe: {
+		content: {
+			type: null,
 			url: null,
 			width: null,
 			height: null
@@ -77,12 +65,8 @@ module.exports = [
 			imageUrl: "/img/archery-game/animated.gif",
 			shape: ["XX","XX","XX","XX","XX","XX"]
 		},
-		image: {
-			url: null,
-			width: null,
-			height: null
-		},
-		iframe: {
+		content: {
+			type: null,
 			url: null,
 			width: null,
 			height: null
@@ -99,12 +83,8 @@ module.exports = [
 			imageUrl: "/img/space-team-galaxy-explorer/animated.gif",
 			shape: ["XXXXXX","XXXXXX","XXXXXX","XXXXXX"]
 		},
-		image: {
-			url: null,
-			width: null,
-			height: null
-		},
-		iframe: {
+		content: {
+			type: null,
 			url: null,
 			width: null,
 			height: null
@@ -121,12 +101,8 @@ module.exports = [
 			imageUrl: "/img/breakout-ball/animated.gif",
 			shape: ["XX","XX"]
 		},
-		image: {
-			url: null,
-			width: null,
-			height: null
-		},
-		iframe: {
+		content: {
+			type: null,
 			url: null,
 			width: null,
 			height: null
@@ -143,12 +119,8 @@ module.exports = [
 			imageUrl: "/img/alchemy-drop/animated.gif",
 			shape: ["XX","XX"]
 		},
-		image: {
-			url: null,
-			width: null,
-			height: null
-		},
-		iframe: {
+		content: {
+			type: null,
 			url: null,
 			width: null,
 			height: null
@@ -165,12 +137,8 @@ module.exports = [
 			imageUrl: "/img/minisnake/animated.gif",
 			shape: ["XX","XX"]
 		},
-		image: {
-			url: null,
-			width: null,
-			height: null
-		},
-		iframe: {
+		content: {
+			type: null,
 			url: null,
 			width: null,
 			height: null
@@ -187,12 +155,8 @@ module.exports = [
 			imageUrl: "/img/grapple-game/animated.gif",
 			shape: ["XXXX","XXXX","XXXX","XXXX"]
 		},
-		image: {
-			url: null,
-			width: null,
-			height: null
-		},
-		iframe: {
+		content: {
+			type: null,
 			url: null,
 			width: null,
 			height: null
@@ -209,12 +173,8 @@ module.exports = [
 			imageUrl: "/img/tranquilime/animated.gif",
 			shape: ["XXXX","XXXX"]
 		},
-		image: {
-			url: null,
-			width: null,
-			height: null
-		},
-		iframe: {
+		content: {
+			type: null,
 			url: null,
 			width: null,
 			height: null
@@ -231,12 +191,26 @@ module.exports = [
 			imageUrl: "/img/processing-sketchbook/animated.gif",
 			shape: ["XX","XX"]
 		},
-		image: {
+		content: {
+			type: null,
 			url: null,
 			width: null,
 			height: null
+		}
+	}, {
+		id: "zombie-aflockalypse",
+		title: null,
+		description: null,
+		medium: "Flash",
+		timePeriod: "2009",
+		repoUrl: null,
+		grid: {
+			previewImageUrl: "/img/zombie-aflockalypse/sepia.gif",
+			imageUrl: "/img/zombie-aflockalypse/animated.gif",
+			shape: ["XXXX","XXXX","XXXX","XXXX"]
 		},
-		iframe: {
+		content: {
+			type: null,
 			url: null,
 			width: null,
 			height: null

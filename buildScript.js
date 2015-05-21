@@ -8,8 +8,19 @@ module.exports = function buildIndexHTML() {
 	var processedProjectData = projectData.map(function(project) {
 		return {
 			id: project.id,
+			title: project.title,
+			description: project.description,
+			medium: project.medium,
+			timePeriod: project.timePeriod,
+			repoUrl: project.repoUrl,
 			grid: {
 				shape: project.grid.shape
+			},
+			content: {
+				type: project.content.type,
+				url: project.content.url,
+				width: project.content.width,
+				height: project.content.height
 			}
 		};
 	});

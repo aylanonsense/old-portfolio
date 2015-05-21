@@ -23,24 +23,9 @@ module.exports = function buildIndexHTML() {
 		}
 		return {
 			id: project.id,
-			title: project.title,
-			description: project.description,
-			medium: project.medium,
-			timePeriod: project.timePeriod,
-			repoUrl: project.repoUrl,
 			grid: {
 				previewImageUrl: project.grid.previewImageUrl,
 				imageUrl: project.grid.imageUrl
-			},
-			image: {
-				url: project.image.url,
-				width: project.image.width,
-				height: project.image.height,
-			},
-			iframe: {
-				url: project.iframe.url,
-				width: project.iframe.width,
-				height: project.iframe.height,
 			},
 			hitbox: hitbox,
 			width: cols * (tileSize.width + tileSize.margin),

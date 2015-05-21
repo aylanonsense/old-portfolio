@@ -7,6 +7,8 @@ $(document).ready(function() {
 	var body = $(document.body);
 	var projectContainer = $('#projects');
 	var projectElements = {};
+	var dialogScreen = $('#dialog-screen');
+	var dialog = $('#dialog').hide();
 	projects.forEach(function(project) {
 		//find the project's shape element
 		var element = $('#project-' + project.id);
@@ -21,12 +23,32 @@ $(document).ready(function() {
 				img.clearQueue().fadeTo(500, 0.0);
 			})
 			.on('click', function() {
-				console.log("CLICK:", project.id);
+				openDialog(project);
 			});
 
 		//store element in lookup table
 		projectElements[project.id] = element;
 	});
+
+	//when the dialog screen is clicked it closes the dialog
+	dialogScreen.on('click', function() {
+		//TODO prevent double-clicks from immediately closing the dialog
+		hideDialog();
+	});
+
+	//when the user clicks on a shape, it opens a dialog
+	function openDialog(project) {
+		dialogScreen.fadeTo(500, 0.5);
+		dialog.show().clearQueue().animate({
+			opacity: 1.0,
+			width: project.content.width || 50,
+			height: project.content.height || 50
+		}, 1000);
+	}
+	function hideDialog() {
+		dialogScreen.clearQueue().hide();
+		dialog.clearQueue().hide();
+	}
 
 	//whenever we change the width of the screen, we may need to re-squish everything together
 	var numColumnsCurrentlyRendered = null;
