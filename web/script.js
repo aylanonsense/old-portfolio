@@ -6,16 +6,29 @@ $(document).ready(function() {
 	//constants
 	var MIN_COLUMNS = 4;
 	var RESIZE_DELAY = 250;
-	var DIALOG_FADE_IN_TIME = 500;
-	var DIALOG_FADE_OUT_TIME = 500;
+	var DEFAULT_DIALOG_CONTENT_AREA_WIDTH = 200;
+	var DEFAULT_DIALOG_CONTENT_AREA_HEIGHT = 200;
+	var DIALOG_FADE_IN_TIME = 200;
+	var DIALOG_FADE_OUT_TIME = 200;
+	var DIALOG_SWITCH_FADE_OUT_TIME = 300;
+	var DIALOG_SWITCH_FADE_IN_TIME = 300;
 	var IMAGE_FADE_IN_TIME = 500;
 	var IMAGE_FADE_OUT_TIME = 500;
 
 	//gather jQuery references to elements
 	var body = $(document.body);
 	var shapeContainer = $('#shapes');
-	var dialogScreen = $('#dialog-screen');
 	var dialog = $('#dialog').hide();
+	var leftArrow = dialog.find('.left-arrow');
+	var rightArrow = dialog.find('.right-arrow');
+	var dialogScreen = dialog.find('.screen');
+	var dialogDetails = dialog.find('.details');
+	var dialogTitle = dialog.find('h2');
+	var dialogDescription = dialog.find('.description');
+	var dialogMedium = dialog.find('.medium');
+	var dialogTimePeriod = dialog.find('.time-period');
+	var dialogRepoLink = dialog.find('.repo-link');
+	var dialogContentArea = dialog.find('.content-area');
 	projects.forEach(function(project) {
 		project.shape = $('#shape-' + project.id);
 	});
@@ -141,26 +154,128 @@ $(document).ready(function() {
 
 	//open the dialog and display a particular project
 	var dialogState = 'closed';
+	var openedProject = null;
 	function openDialog(project) {
 		if(dialogState === 'closed') {
 			dialogState = 'opening';
-			dialogScreen.show().fadeTo(DIALOG_FADE_IN_TIME, 0.5);
-			dialog.show().fadeTo(DIALOG_FADE_IN_TIME, 1.0, function() {
+			openedProject = project;
+
+			//you can't scroll while the dialog is opened (or opening);
+			body.addClass('no-scroll');
+
+			//populate the dialog with the project data
+			populateDialogDetails(project);
+
+			//resize the content area to fit the content that will be there
+			dialogContentArea.css({
+				width: project.content.width || DEFAULT_DIALOG_CONTENT_AREA_WIDTH,
+				height: project.content.height || DEFAULT_DIALOG_CONTENT_AREA_HEIGHT
+			});
+
+			//open the dialog
+			dialog.css('display', 'flex').fadeTo(DIALOG_FADE_IN_TIME, 1.0, function() {
 				dialogState = 'open';
+
+				//fill in the content area only after the dialog is fully visible
+				if(project.content.type === 'iframe') {
+					$('<iframe ' +
+						'src="' + project.content.url +'" ' +
+						'width="' + project.content.width + 'px" ' +
+						'height="' + project.content.height + 'px" ' +
+						'frameborder="0" ' +
+						'scrolling="no" ' +
+						'></iframe>')
+						.appendTo(dialogContentArea).focus();
+				}
 			});
 		}
 	}
 	function closeDialog() {
 		if(dialogState === 'open') {
 			dialogState = 'closing';
-			dialogScreen.fadeTo(DIALOG_FADE_OUT_TIME, 0.0, function() {
-				dialogScreen.hide();
-			});
+			openedProject = null;
 			dialog.fadeTo(DIALOG_FADE_OUT_TIME, 0.0, function() {
 				dialog.hide();
+				dialogContentArea.empty();
+				body.removeClass('no-scroll');
 				dialogState = 'closed';
 			});
 		}
+	}
+
+	//when the left/right buttons are pressed, we move to the previous/next project
+	leftArrow.on('click', function() {
+		switchToPreviousProject();
+	});
+	rightArrow.on('click', function() {
+		switchToNextProject();
+	});
+	function getIndexOfProject(project) {
+		for(var i = 0; i < projects.length; i++) {
+			if(projects[i].id === project.id) {
+				return i;
+			}
+		}
+	}
+	function switchToPreviousProject() {
+		var len = projects.length;
+		switchDialog(projects[(getIndexOfProject(openedProject) + len - 1) % len]);
+	}
+	function switchToNextProject() {
+		switchDialog(projects[(getIndexOfProject(openedProject) + 1) % projects.length]);
+	}
+	function switchDialog(project) {
+		if(dialogState === 'open') {
+			dialogState = 'switching';
+			openedProject = project;
+
+			//resize the content area to fit the content that will be there
+			dialogContentArea.empty().animate({
+				width: project.content.width || DEFAULT_DIALOG_CONTENT_AREA_WIDTH,
+				height: project.content.height || DEFAULT_DIALOG_CONTENT_AREA_HEIGHT
+			}, DIALOG_SWITCH_FADE_OUT_TIME + DIALOG_SWITCH_FADE_IN_TIME);
+
+			//fade out the existing details
+			dialogDetails.fadeTo(DIALOG_SWITCH_FADE_OUT_TIME, 0.0, function() {
+				//populate the dialog with the new project data
+				populateDialogDetails(project);
+
+				//fade the details back in
+				dialogDetails.fadeTo(DIALOG_SWITCH_FADE_IN_TIME, 1.0, function() {
+					dialogState = 'open';
+				});
+			});
+
+			/*//resize the content area to fit the content that will be there
+			dialogContentArea.animate({
+				width: project.content.width || DEFAULT_DIALOG_CONTENT_AREA_WIDTH,
+				height: project.content.height || DEFAULT_DIALOG_CONTENT_AREA_HEIGHT
+			}, DIALOG_SWITCH_TIME);
+
+			//open the dialog
+			dialog.css('display', 'flex').fadeTo(DIALOG_FADE_IN_TIME, 1.0, function() {
+				dialogState = 'open';
+
+				//fill in the content area only after the dialog is fully visible
+				if(project.content.type === 'iframe') {
+					$('<iframe ' +
+						'src="' + project.content.url +'" ' +
+						'width="' + project.content.width + 'px" ' +
+						'height="' + project.content.height + 'px" ' +
+						'frameborder="0" ' +
+						'scrolling="no" ' +
+						'></iframe>')
+						.appendTo(dialogContentArea).focus();
+				}
+			});*/
+		}
+	}
+	function populateDialogDetails(project) {
+		dialogTitle.toggle(project.title !== null).text(project.title);
+		dialogDescription.toggle(project.description !== null).text(project.description);
+		dialogMedium.toggle(project.medium !== null).text(project.medium);
+		dialogTimePeriod.toggle(project.timePeriod !== null).text(project.timePeriod);
+		dialogRepoLink.toggle(project.repoUrl !== null).attr('href', project.repoUrl);
 	}
 
 	//when the page loads we reposition shapes into a grid immediately
