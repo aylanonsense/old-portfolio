@@ -9,10 +9,11 @@ module.exports = function buildIndexHTML() {
 		return {
 			id: project.id,
 			title: project.title,
-			description: project.description,
-			medium: project.medium,
 			timePeriod: project.timePeriod,
+			medium: project.medium,
 			repoUrl: project.repoUrl,
+			description: project.description,
+			instructions: project.instructions,
 			grid: {
 				tiles: project.grid.tiles
 			},
@@ -20,7 +21,9 @@ module.exports = function buildIndexHTML() {
 				type: project.content.type,
 				url: project.content.url,
 				width: project.content.width,
-				height: project.content.height
+				height: project.content.height,
+				x: project.content.x,
+				y: project.content.y
 			}
 		};
 	});

@@ -3,6 +3,7 @@
 		<title>bridgs' portfolio</title>
 		<script type="text/javascript" src="/jquery.min.js"></script>
 		<script type="text/javascript" src="/script.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,100italic,400' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="/css/styles.css"></link>
 	</head>
 	<body>
@@ -20,21 +21,33 @@
 			<% }); %>
 		</section>
 
-		<aside id="dialog">
+		<div id="dialog-stuff">
 			<div class="screen"></div>
 			<div class="left-arrow"></div>
-			<div class="content">
-				<div class="content-area"></div>
-				<div class="details">
-					<h2></h2>
-					<span class="time-period"></span>
-					<span class="medium"></span>
-					<a class="repo-link" href="#"></a>
-					<div class="description"></div>
+			<div class="right-arrow"></div>
+			<div id="dialog-0" class="dialog">
+				<div class="body">
+					<div class="content"></div>
+					<div class="details">
+						<h2><span class="title"></span> <span class="time-period"></span></h2>
+						<h3><span class="medium"></span> <a class="repo-link" href="#"></a></h3>
+						<p class="description"></p>
+						<p class="instructions"></p>
+					</div>
 				</div>
 			</div>
-			<div class="right-arrow"></div>
-		</aside>
+			<div id="dialog-1" class="dialog">
+				<div class="body">
+					<div class="content"></div>
+					<div class="details">
+						<h2><span class="title"></span> <span class="time-period"></span></h2>
+						<h3><span class="medium"></span> <a class="repo-link" href="#"></a></h3>
+						<p class="description"></p>
+						<p class="instructions"></p>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</body>
 </html>

@@ -5,30 +5,40 @@ $(document).ready(function() {
 
 	//constants
 	var MIN_COLUMNS = 4;
-	var RESIZE_DELAY = 250;
-	var DEFAULT_DIALOG_CONTENT_AREA_WIDTH = 200;
-	var DEFAULT_DIALOG_CONTENT_AREA_HEIGHT = 200;
+	var TILE_IMAGE_FADE_IN_TIME = 500;
+	var TILE_IMAGE_FADE_OUT_TIME = 500;
+	var TILE_RESIZE_DELAY = 250;
+	var DIALOG_CONTENT_DEFAULT_WIDTH = 200;
+	var DIALOG_CONTENT_DEFAULT_HEIGHT = 200;
 	var DIALOG_FADE_IN_TIME = 200;
 	var DIALOG_FADE_OUT_TIME = 200;
-	var DIALOG_SWITCH_FADE_OUT_TIME = 300;
-	var DIALOG_SWITCH_FADE_IN_TIME = 300;
-	var IMAGE_FADE_IN_TIME = 500;
-	var IMAGE_FADE_OUT_TIME = 500;
+	var DIALOG_SWITCH_TIME = 600;
+	var DIALOG_EXTRA_SWITCH_DIST = 600;
 
 	//gather jQuery references to elements
 	var body = $(document.body);
 	var shapeContainer = $('#shapes');
-	var dialog = $('#dialog').hide();
-	var leftArrow = dialog.find('.left-arrow');
-	var rightArrow = dialog.find('.right-arrow');
-	var dialogScreen = dialog.find('.screen');
-	var dialogDetails = dialog.find('.details');
-	var dialogTitle = dialog.find('h2');
-	var dialogDescription = dialog.find('.description');
-	var dialogMedium = dialog.find('.medium');
-	var dialogTimePeriod = dialog.find('.time-period');
-	var dialogRepoLink = dialog.find('.repo-link');
-	var dialogContentArea = dialog.find('.content-area');
+	var dialogStuff = $('#dialog-stuff').hide();
+	var leftArrow = dialogStuff.find('.left-arrow');
+	var rightArrow = dialogStuff.find('.right-arrow');
+	var dialogScreen = dialogStuff.find('.screen');
+	var dialogs = [ "#dialog-0", "#dialog-1" ].map(function(selector) {
+		var dialog = $(selector);
+		return {
+			ele: dialog,
+			body: dialog.find('.body'),
+			details: dialog.find('.details'),
+			h2: dialog.find('h2'),
+			title: dialog.find('.title'),
+			timePeriod: dialog.find('.time-period'),
+			h3: dialog.find('h3'),
+			medium: dialog.find('.medium'),
+			repoLink: dialog.find('.repo-link'),
+			description: dialog.find('.description'),
+			instructions: dialog.find('.instructions'),
+			content: dialog.find('.content')
+		};
+	});
 	projects.forEach(function(project) {
 		project.shape = $('#shape-' + project.id);
 	});
@@ -39,11 +49,11 @@ $(document).ready(function() {
 		project.shape
 			//on hover, fade in the saturated/animated image
 			.on('mouseenter', function() {
-				img.stop().fadeTo(Math.floor(IMAGE_FADE_IN_TIME * (1.0 - +img.css('opacity'))), 1.0);
+				img.stop().fadeTo(Math.floor(TILE_IMAGE_FADE_IN_TIME * (1.0 - +img.css('opacity'))), 1.0);
 			})
 			//when the mouse leaves the shape, fade out the saturated/animated image
 			.on('mouseleave', function() {
-				img.stop().fadeTo(Math.floor(IMAGE_FADE_OUT_TIME * +img.css('opacity')), 0.0);
+				img.stop().fadeTo(Math.floor(TILE_IMAGE_FADE_OUT_TIME * +img.css('opacity')), 0.0);
 			})
 			//when a shape is clicked, open the project dialog
 			.on('click', function() {
@@ -52,8 +62,10 @@ $(document).ready(function() {
 	});
 
 	//when you click in the dark area around the dialog, close the dialog
-	dialogScreen.on('click', function() {
-		closeDialog();
+	$('.dialog').on('click', function(evt) {
+		if(evt.target === this) {
+			closeDialog();
+		}
 	});
 
 	//when the page is resized, we may need to reposition all of the shapes
@@ -68,13 +80,13 @@ $(document).ready(function() {
 				repositionShapes();
 			}
 			else {
-				resetResizeTimer(RESIZE_DELAY + timeOfLastResizeEvent - Date.now());
+				resetResizeTimer(TILE_RESIZE_DELAY + timeOfLastResizeEvent - Date.now());
 			}
 		}, delay);
 	}
 	$(window).on('resize', function() {
 		if(!resizeTimer) {
-			resetResizeTimer(RESIZE_DELAY);
+			resetResizeTimer(TILE_RESIZE_DELAY);
 		}
 		else {
 			timeOfLastResizeEvent = Date.now();
@@ -152,63 +164,15 @@ $(document).ready(function() {
 		return true;
 	}
 
-	//open the dialog and display a particular project
-	var dialogState = 'closed';
-	var openedProject = null;
-	function openDialog(project) {
-		if(dialogState === 'closed') {
-			dialogState = 'opening';
-			openedProject = project;
-
-			//you can't scroll while the dialog is opened (or opening);
-			body.addClass('no-scroll');
-
-			//populate the dialog with the project data
-			populateDialogDetails(project);
-
-			//resize the content area to fit the content that will be there
-			dialogContentArea.css({
-				width: project.content.width || DEFAULT_DIALOG_CONTENT_AREA_WIDTH,
-				height: project.content.height || DEFAULT_DIALOG_CONTENT_AREA_HEIGHT
-			});
-
-			//open the dialog
-			dialog.css('display', 'flex').fadeTo(DIALOG_FADE_IN_TIME, 1.0, function() {
-				dialogState = 'open';
-
-				//fill in the content area only after the dialog is fully visible
-				if(project.content.type === 'iframe') {
-					$('<iframe ' +
-						'src="' + project.content.url +'" ' +
-						'width="' + project.content.width + 'px" ' +
-						'height="' + project.content.height + 'px" ' +
-						'frameborder="0" ' +
-						'scrolling="no" ' +
-						'></iframe>')
-						.appendTo(dialogContentArea).focus();
-				}
-			});
-		}
-	}
-	function closeDialog() {
-		if(dialogState === 'open') {
-			dialogState = 'closing';
-			openedProject = null;
-			dialog.fadeTo(DIALOG_FADE_OUT_TIME, 0.0, function() {
-				dialog.hide();
-				dialogContentArea.empty();
-				body.removeClass('no-scroll');
-				dialogState = 'closed';
-			});
-		}
-	}
-
 	//when the left/right buttons are pressed, we move to the previous/next project
 	leftArrow.on('click', function() {
-		switchToPreviousProject();
+		//switch to previous project
+		var len = projects.length;
+		switchDialog(projects[(getIndexOfProject(activeDialogProject) + len - 1) % len], 'left');
 	});
 	rightArrow.on('click', function() {
-		switchToNextProject();
+		//switch to next project
+		switchDialog(projects[(getIndexOfProject(activeDialogProject) + 1) % projects.length], 'right');
 	});
 	function getIndexOfProject(project) {
 		for(var i = 0; i < projects.length; i++) {
@@ -217,65 +181,140 @@ $(document).ready(function() {
 			}
 		}
 	}
-	function switchToPreviousProject() {
-		var len = projects.length;
-		switchDialog(projects[(getIndexOfProject(openedProject) + len - 1) % len]);
-	}
-	function switchToNextProject() {
-		switchDialog(projects[(getIndexOfProject(openedProject) + 1) % projects.length]);
-	}
-	function switchDialog(project) {
-		if(dialogState === 'open') {
-			dialogState = 'switching';
-			openedProject = project;
 
-			//resize the content area to fit the content that will be there
-			dialogContentArea.empty().animate({
-				width: project.content.width || DEFAULT_DIALOG_CONTENT_AREA_WIDTH,
-				height: project.content.height || DEFAULT_DIALOG_CONTENT_AREA_HEIGHT
-			}, DIALOG_SWITCH_FADE_OUT_TIME + DIALOG_SWITCH_FADE_IN_TIME);
+	//open the dialog and display a particular project
+	var dialogState = 'closed';
+	var activeDialogProject = null;
+	var activeDialogIndex = 0;
+	function openDialog(project) {
+		if(dialogState === 'closed') {
+			dialogState = 'opening';
+			activeDialogProject = project;
 
-			//fade out the existing details
-			dialogDetails.fadeTo(DIALOG_SWITCH_FADE_OUT_TIME, 0.0, function() {
-				//populate the dialog with the new project data
-				populateDialogDetails(project);
+			//you can't scroll while the dialog is opened/opening
+			body.addClass('no-scroll');
 
-				//fade the details back in
-				dialogDetails.fadeTo(DIALOG_SWITCH_FADE_IN_TIME, 1.0, function() {
-					dialogState = 'open';
-				});
-			});
+			//hide all them dialogs to start
+			dialogs.forEach(hideDialog);
 
-			/*//resize the content area to fit the content that will be there
-			dialogContentArea.animate({
-				width: project.content.width || DEFAULT_DIALOG_CONTENT_AREA_WIDTH,
-				height: project.content.height || DEFAULT_DIALOG_CONTENT_AREA_HEIGHT
-			}, DIALOG_SWITCH_TIME);
+			//position the active dialog and show it
+			activeDialogIndex = 0;
+			var activeDialog = dialogs[activeDialogIndex];
+			positionDialogInCenterOfScreen(activeDialog);
+			showDialog(activeDialog);
+
+			//load the data into the dialog
+			preloadProjectIntoDialog(project, activeDialog);
 
 			//open the dialog
-			dialog.css('display', 'flex').fadeTo(DIALOG_FADE_IN_TIME, 1.0, function() {
-				dialogState = 'open';
-
+			dialogStuff.show().fadeTo(DIALOG_FADE_IN_TIME, 1.0, function() {
 				//fill in the content area only after the dialog is fully visible
-				if(project.content.type === 'iframe') {
-					$('<iframe ' +
-						'src="' + project.content.url +'" ' +
-						'width="' + project.content.width + 'px" ' +
-						'height="' + project.content.height + 'px" ' +
-						'frameborder="0" ' +
-						'scrolling="no" ' +
-						'></iframe>')
-						.appendTo(dialogContentArea).focus();
-				}
-			});*/
+				loadContentIntoDialog(project, activeDialog);
+				dialogState = 'open';
+			});
 		}
 	}
-	function populateDialogDetails(project) {
-		dialogTitle.toggle(project.title !== null).text(project.title);
-		dialogDescription.toggle(project.description !== null).text(project.description);
-		dialogMedium.toggle(project.medium !== null).text(project.medium);
-		dialogTimePeriod.toggle(project.timePeriod !== null).text(project.timePeriod);
-		dialogRepoLink.toggle(project.repoUrl !== null).attr('href', project.repoUrl);
+	function closeDialog() {
+		if(dialogState === 'open') {
+			dialogState = 'closing';
+			activeDialogProject = null;
+			dialogStuff.fadeTo(DIALOG_FADE_OUT_TIME, 0.0, function() {
+				dialogStuff.hide();
+				emptyDialogContent(dialogs[activeDialogIndex]);
+				body.removeClass('no-scroll');
+				dialogState = 'closed';
+			});
+		}
+	}
+	function switchDialog(project, dir) {
+		if(dialogState === 'open') {
+			dialogState = 'switching';
+			activeDialogProject = project;
+
+			//move the active dialog off to the side
+			var oldActiveDialog = dialogs[activeDialogIndex];
+			slideDialogOffScreen(oldActiveDialog, (dir === 'left' ? 'right' : 'left'), function() {
+				hideDialog(oldActiveDialog);
+				emptyDialogContent(oldActiveDialog);
+			});
+
+			//find the next active dialog
+			activeDialogIndex = 1 - activeDialogIndex;
+			var newActiveDialog = dialogs[activeDialogIndex];
+
+			//slide it onto screen
+			preloadProjectIntoDialog(project, newActiveDialog);
+			positionDialogOffScreen(newActiveDialog, dir);
+			showDialog(newActiveDialog);
+			slideDialogToCenterOfScreen(newActiveDialog, function() {
+				loadContentIntoDialog(project, newActiveDialog);
+				dialogState = 'open';
+			});
+		}
+	}
+
+	//dialog helper functions
+	function preloadProjectIntoDialog(project, dialog) {
+		//resize the content area to fit the content that will be there
+		dialog.content.css({
+			width: project.content.width || DIALOG_CONTENT_DEFAULT_WIDTH,
+			height: project.content.height || DIALOG_CONTENT_DEFAULT_HEIGHT
+		});
+		//fill out the details
+		dialog.title.toggle(project.title !== null).text(project.title);
+		dialog.timePeriod.toggle(project.timePeriod !== null).text("(" + project.timePeriod + ")");
+		dialog.h2.toggle(project.title !== null || project.timePeriod !== null);
+		dialog.medium.toggle(project.medium !== null).text(project.medium);
+		dialog.repoLink.toggle(project.repoUrl !== null).attr('href', project.repoUrl);
+		dialog.h2.toggle(project.medium !== null || project.repoUrl !== null);
+		dialog.description.toggle(project.description !== null).html(project.description);
+		dialog.instructions.toggle(project.instructions !== null).html(project.instructions);
+	}
+	function loadContentIntoDialog(project, dialog) {
+		if(project.content.type === 'iframe') {
+			var width = project.content.width;
+			var height = project.content.height;
+			var x = project.content.x;
+			var y = project.content.y;
+			$('<div style="overflow: hidden;' +
+				'width: ' + width + 'px; ' +
+				'height: ' + height + 'px;">' +
+					'<iframe ' +
+						'src="' + project.content.url +'" ' +
+						'width="' + (x + width) + 'px" ' +
+						'height="' + (y + height) + 'px" ' +
+						'frameborder="0" ' +
+						'scrolling="no" ' +
+						'style="margin-left:' + (-x) + 'px;margin-top:' + (-y) + 'px;"' +
+						'></iframe>' +
+				'</div>')
+				.appendTo(dialog.content).find('iframe').focus();
+		}
+	}
+	function positionDialogInCenterOfScreen(dialog) {
+		dialog.body.css('left', 0);
+	}
+	function positionDialogOffScreen(dialog, dir) {
+		var dist = body.width() / 2 + DIALOG_EXTRA_SWITCH_DIST;
+		dialog.body.css('left', (dir === 'left' ? -dist : dist));
+	}
+	function slideDialogOffScreen(dialog, dir, callback) {
+		var dist = body.width() / 2 + DIALOG_EXTRA_SWITCH_DIST;
+		dialog.body.animate({
+			left: (dir === 'left' ? -dist : dist)
+		}, DIALOG_SWITCH_TIME, callback);
+	}
+	function slideDialogToCenterOfScreen(dialog, callback) {
+		dialog.body.animate({ left: 0 }, DIALOG_SWITCH_TIME, callback);
+	}
+	function showDialog(dialog) {
+		dialog.ele.show();
+	}
+	function hideDialog(dialog) {
+		dialog.ele.hide();
+	}
+	function emptyDialogContent(dialog) {
+		dialog.content.empty();
 	}
 
 	//when the page loads we reposition shapes into a grid immediately

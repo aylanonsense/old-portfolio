@@ -6,7 +6,7 @@ html, body, #shapes {
 	height: 100%;
 }
 body {
-	background-color: #000;
+	background-color: #fff;
 	&.no-scroll {
 		overflow: hidden
 	}
@@ -39,35 +39,21 @@ body {
 		opacity: 0.0;
 	}
 }
-#dialog {
-	z-index: 3;
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	display: none; //will be "flex" when displayed
-	opacity: 0.0;
-	align-items: center;
-	justify-content: center;
+#dialog-stuff {
 	.screen {
+		z-index: 3;
+		position: fixed;
 		background-color: #000;
 		opacity: 0.5;
-		position: fixed;
 		top: 0;
+		bottom: 0;
 		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-	.left-arrow {
-		margin-right: 10px;
-	}
-	.right-arrow {
-		margin-left: 10px;
+		right: 0;
 	}
 	.left-arrow, .right-arrow {
-		z-index: 4;
-		color: #fff;
+		z-index: 5;
+		position: fixed;
+		top: 50%;
 		background-color: #00f;
 		width: 40px;
 		height: 40px;
@@ -76,14 +62,65 @@ body {
 			background-color: #f00;
 		}
 	}
-	.content {
+	.left-arrow {
+		left: 10%;
+	}
+	.right-arrow {
+		right: 10%;
+	}
+	.dialog {
 		z-index: 4;
-		padding: 3px;
-		background-color: #333;
-		color: #fff;
-		.content-area {
-			background-color: #000;
-			overflow: hidden;
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.body {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+			min-height: 400px;
+			.content {
+				background-color: yellow;
+			}
+			.details {
+				background-color: #fff;
+				width: 330px;
+				min-height: 110px;
+				margin-top: 10px;
+				padding: 12px 12px 7px 12px;
+				font-family: 'Roboto', sans-serif;
+				h2 {
+					margin: 0 0 4px 0;
+					font-size: 14pt;
+					font-weight: 400;
+					.time-period {
+						font-size: 12pt;
+						font-weight: 300;
+					}
+				}
+				h3 {
+					margin: 0 0 7px 0;
+					font-size: 12pt;
+					font-weight: 300;
+				}
+				.description {
+					margin: 0 0 5px 0;
+					font-size: 10pt;
+					font-weight: 100;
+				}
+				.instructions {
+					margin: 0 0 5px 0;
+					font-size: 10pt;
+					font-weight: 100;
+					font-style: italic;
+				}
+			}
 		}
 	}
 }
