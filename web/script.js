@@ -3,6 +3,11 @@ $(document).ready(function() {
 	var projects = <%= projects %>; //jshint ignore:line
 	var tileSize = <%= tileSize %>; //jshint ignore:line
 
+	//sort projects by size of the shape
+	var projectsByShapeSize = projects.slice(0).sort(function(a, b) {
+		return b.grid.area - a.grid.area;
+	});
+
 	//constants
 	var MIN_COLUMNS = 4;
 	var TILE_IMAGE_FADE_IN_TIME = 500;
@@ -115,53 +120,93 @@ $(document).ready(function() {
 		}
 
 		//for each project/shape, find the earliest spot where it fits
-		for(var i = 0; i < projects.length; i++) {
+		projectsByShapeSize.forEach(function(project) {
 			//find a spot for the shape
-			var tiles = projects[i].grid.tiles;
+			var tiles = project.grid.tiles;
 			var position = findPositionForTiles(tiles, grid, numRows, numColumns);
+			writeTilesIntoGrid(tiles, grid, position.row, position.col);
 			var shapeHeight = tiles.length;
 			numRows = Math.max(numRows, position.row + shapeHeight + 1);
 
 			//move the shape
-			projects[i].shape.css({
+			project.shape.css({
 				position: 'absolute',
 				top: position.row * (tileSize.height + tileSize.margin),
 				left: position.col * (tileSize.width + tileSize.margin)
 			});
-		}
+		});
 	}
 	function findPositionForTiles(tiles, grid, numRows, numColumns) {
 		var shapeWidth = Math.max.apply(Math, tiles.map(function(row) { return row.length; }));
+		var highScore = null;
+		var highestScoringPosition = null;
 		for(var r = 0; r <= numRows; r++) {
 			for(var c = 0; c <= numColumns - shapeWidth; c++) {
-				if(tryToFitTilesIntoPosition(tiles, grid, r, c)) {
-					return { row: r, col: c };
+				if(canFitTilesIntoGrid(tiles, grid, r, c)) {
+					writeTilesIntoGrid(tiles, grid, r, c);
+					var score = evaluateGrid(grid, numRows, numColumns);
+					unwriteTilesFromGrid(tiles, grid, r, c);
+					if(highScore === null || score > highScore) {
+						highScore = score;
+						highestScoringPosition = { row: r, col: c };
+					}
 				}
 			}
+		}
+		//we return the best spot
+		if(highestScoringPosition) {
+			console.log(highScore);
+			return highestScoringPosition;
 		}
 		//if we couldn't find a spot for the shape it means it's too wide to fit
 		return { row: numRows, col: 0 };
 	}
-	function tryToFitTilesIntoPosition(tiles, grid, row, col) {
-		var r, c;
+	function evaluateGrid(grid, numRows, numColumns) {
+		var amountOfMess = 0;
+		for(var c = 0; c < numColumns; c++) {
+			var hasEncounteredFilledTile = false;
+			for(var r = numRows; r >= 0; r--) {
+				if(grid[c][r]) {
+					hasEncounteredFilledTile = true;
+				}
+				else {
+					amountOfMess += (hasEncounteredFilledTile ? 2 : 1) * (numRows - r);
+				}
+			}
+		}
+		return -amountOfMess;
+	}
+	function canFitTilesIntoGrid(tiles, grid, row, col) {
 		//the tiles only fit if all of the grid's spaces they would go in are empty
-		for(r = 0; r < tiles.length; r++) {
-			for(c = 0; c < tiles[r].length; c++) {
+		for(var r = 0; r < tiles.length; r++) {
+			for(var c = 0; c < tiles[r].length; c++) {
 				if(tiles[r][c] !== ' ' && grid[col + c][row + r]) {
 					return false;
 				}
 			}
 		}
+		return true;
+	}
+	function writeTilesIntoGrid(tiles, grid, row, col) {
 		//if the tiles do fit, mark them off in the grid as no longer being empty
-		for(r = 0; r < tiles.length; r++) {
-			for(c = 0; c < tiles[r].length; c++) {
+		for(var r = 0; r < tiles.length; r++) {
+			for(var c = 0; c < tiles[r].length; c++) {
 				//make sure the tiles can fit
 				if(tiles[r][c] !== ' ') {
 					grid[col + c][row + r] = true;
 				}
 			}
 		}
-		return true;
+	}
+	function unwriteTilesFromGrid(tiles, grid, row, col) {
+		for(var r = 0; r < tiles.length; r++) {
+			for(var c = 0; c < tiles[r].length; c++) {
+				//make sure the tiles can fit
+				if(tiles[r][c] !== ' ') {
+					grid[col + c][row + r] = false;
+				}
+			}
+		}
 	}
 
 	//when the left/right buttons are pressed, we move to the previous/next project
