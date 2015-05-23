@@ -125,90 +125,6 @@ module.exports = [
 			x: 50,
 			y: 50
 		}
-	}/*, {
-		id: "paradox-anomaly",
-		title: "Paradox: Anomaly",
-		timePeriod: "December 2014",
-		medium: "Node.js",
-		repoUrl: "https://github.com/bridgs/paradox-anomaly",
-		description: "A tile-based puzzle game invovling time travel. The final product would revolve around solving puzzles while avoiding paradoxes that would be caused by interfering with your past self.",
-		instructions: "WASD: move, Z: use/drop item, X: return to the past",
-		grid: {
-			previewImageUrl: "/img/paradox-anomaly/sepia.gif",
-			imageUrl: "/img/paradox-anomaly/animated.gif",
-			tiles: ["XXXX","XXXX","XXXX","XXXX","XXXX"]
-		},
-		content: {
-			type: "iframe",
-			url: "http://brid.gs:3005/",
-			width: 640,
-			height: 500,
-			x: 80,
-			y: 50
-		}
-	}, {
-		id: "spider-game",
-		title: "Spider game",
-		timePeriod: "September 2014",
-		medium: "Node.js",
-		repoUrl: "https://github.com/bridgs/spider-game",
-		description: "A simple spider web simulation thrown together during a family vacation.",
-		instructions: "WASD: move, Shift: lay web",
-		grid: {
-			previewImageUrl: "/img/spider-game/sepia.gif",
-			imageUrl: "/img/spider-game/animated.gif",
-			tiles: ["XX","XX"]
-		},
-		content: {
-			type: "iframe",
-			url: "http://brid.gs:3004/",
-			width: 450,
-			height: 450,
-			x: 0,
-			y: 0
-		}
-	}, {
-		id: "archery-game",
-		title: "Archery game",
-		timePeriod: "May 2014",
-		medium: "Node.js, WebGL",
-		repoUrl: "https://github.com/bridgs/archery-game",
-		description: "First foray into WebGL, the cylindrical player model is able to shoot arrows at varying speeds and distances.",
-		instructions: "WASD: move, Click and drag player: fire arrow, C: change camera",
-		grid: {
-			previewImageUrl: "/img/archery-game/sepia.gif",
-			imageUrl: "/img/archery-game/animated.gif",
-			tiles: ["XX","XX","XX","XX","XX","XX"]
-		},
-		content: {
-			type: "iframe",
-			url: "http://brid.gs:3006/",
-			width: 500,
-			height: 500,
-			x: 0,
-			y: 0
-		}
-	}, {
-		id: "space-team-galaxy-explorer",
-		title: "Space Team: Galaxy Explorer",
-		timePeriod: "November 2014",
-		medium: "Node.js",
-		repoUrl: "https://github.com/bridgs/space-team-galaxy-explorer",
-		description: "A multiplayer spaceship simulator. The end product would give each player their own dashboard and controls for specific parts of the ship as it hurtled through space.",
-		instructions: "Control thrusters with mouse",
-		grid: {
-			previewImageUrl: "/img/space-team-galaxy-explorer/sepia.gif",
-			imageUrl: "/img/space-team-galaxy-explorer/animated.gif",
-			tiles: ["XXXXXX","XXXXXX","XXXXXX","XXXXXX"]
-		},
-		content: {
-			type: "iframe",
-			url: "http://brid.gs:3008/",
-			width: 660,
-			height: 430,
-			x: 20,
-			y: 40
-		}
 	}, {
 		id: "breakout-ball",
 		title: "Breakout Ball",
@@ -218,9 +134,9 @@ module.exports = [
 		description: "Testing frame-by-frame hitboxes to see how that would feel.",
 		instructions: "Left/Right: move, Space: jump, Z: swing",
 		grid: {
-			previewImageUrl: "/img/breakout-ball/sepia.gif",
+			previewImageUrl: "/img/breakout-ball/still.gif",
 			imageUrl: "/img/breakout-ball/animated.gif",
-			tiles: ["XX","XX"]
+			tiles: ["XXX","XXX"]
 		},
 		content: {
 			type: "iframe",
@@ -239,9 +155,9 @@ module.exports = [
 		description: "An exercise in <a href=\"http://en.wikipedia.org/wiki/Code_golf\">code golf</a>. The goal was to implement a minimalist version of Snake in the fewest characters possible. The version above is 623 characters minified.",
 		instructions: "Arrow keys: move",
 		grid: {
-			previewImageUrl: "/img/minisnake/sepia.gif",
+			previewImageUrl: "/img/minisnake/still.gif",
 			imageUrl: "/img/minisnake/animated.gif",
-			tiles: ["XX","XX"]
+			tiles: ["XXX"]
 		},
 		content: {
 			type: "iframe",
@@ -252,23 +168,23 @@ module.exports = [
 			y: 9
 		}
 	}, {
-		id: "tranquilime",
-		title: "tranquilime",
-		timePeriod: "September 2013",
-		medium: "Node.js",
-		repoUrl: "https://github.com/bridgs/tranquilime",
-		description: "Code4Health 2013 hackathon submission. Our team of two created a site for giving comfort to those in need. The final version would have pulled requests for comfort from Twitter and posted the responses anonymously.",
+		id: "zombie-aflockalypse",
+		title: "Zombie Aflockalypse",
+		timePeriod: "2009",
+		medium: "ActionScript",
+		repoUrl: null,
+		description: "College submission for a flocking simulation. The zombies (green dots) are programmed to seek out humans (blue dots) while the humans are programmed to stick together and avoid zombies.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/tranquilime/sepia.gif",
-			imageUrl: "/img/tranquilime/animated.gif",
-			tiles: ["XXXX","XXXX"]
+			previewImageUrl: "/img/zombie-aflockalypse/still.gif",
+			imageUrl: "/img/zombie-aflockalypse/animated.gif",
+			tiles: ["XXX","XXX","XXX"]
 		},
 		content: {
 			type: "iframe",
-			url: "http://tranquili.me/",
-			width: 700,
-			height: 400,
+			url: "/repos/zombie-aflockalypse/zombie-aflockalypse.swf",
+			width: 600,
+			height: 450,
 			x: 0,
 			y: 0
 		}
@@ -281,7 +197,7 @@ module.exports = [
 		description: "Some doodles to get acquainted with Processing.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/processing-sketchbook/sepia.gif",
+			previewImageUrl: "/img/processing-sketchbook/still.gif",
 			imageUrl: "/img/processing-sketchbook/animated.gif",
 			tiles: ["XX","XX"]
 		},
@@ -294,25 +210,109 @@ module.exports = [
 			y: 3
 		}
 	}, {
-		id: "zombie-aflockalypse",
-		title: "Zombie Aflockalypse",
-		timePeriod: "2009",
-		medium: "ActionScript",
-		repoUrl: null,
-		description: "College submission for a flocking simulation. The zombies (green dots) are programmed to seek out humans (blue dots) while the humans are programmed to stick together and avoid zombies.",
+		id: "tranquilime",
+		title: "tranquilime",
+		timePeriod: "September 2013",
+		medium: "Node.js",
+		repoUrl: "https://github.com/bridgs/tranquilime",
+		description: "Code4Health 2013 hackathon submission. Our team of two created a site for giving comfort to those in need. The final version would have pulled requests for comfort from Twitter and posted the responses anonymously.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/zombie-aflockalypse/sepia.gif",
-			imageUrl: "/img/zombie-aflockalypse/animated.gif",
-			tiles: ["XXXX","XXXX","XXXX","XXXX"]
+			previewImageUrl: "/img/tranquilime/still.gif",
+			imageUrl: "/img/tranquilime/animated.gif",
+			tiles: ["XXXX","XXXX"]
 		},
 		content: {
 			type: "iframe",
-			url: "/repos/zombie-aflockalypse/zombie-aflockalypse.swf",
-			width: 600,
+			url: "http://tranquili.me/",
+			width: 700,
+			height: 400,
+			x: 0,
+			y: 0
+		}
+	}, {
+		id: "space-team-galaxy-explorer",
+		title: "Space Team: Galaxy Explorer",
+		timePeriod: "November 2014",
+		medium: "Node.js",
+		repoUrl: "https://github.com/bridgs/space-team-galaxy-explorer",
+		description: "A multiplayer spaceship simulator. The end product would give each player their own dashboard and controls for specific parts of the ship as it hurtled through space.",
+		instructions: "Control thrusters with mouse",
+		grid: {
+			previewImageUrl: "/img/space-team-galaxy-explorer/still.gif",
+			imageUrl: "/img/space-team-galaxy-explorer/animated.gif",
+			tiles: ["XXXXX","XXXXX","XXXXX","XXXXX"]
+		},
+		content: {
+			type: "iframe",
+			url: "http://brid.gs:3008/",
+			width: 660,
+			height: 430,
+			x: 20,
+			y: 40
+		}
+	},  {
+		id: "archery-game",
+		title: "Archery game",
+		timePeriod: "May 2014",
+		medium: "Node.js, WebGL",
+		repoUrl: "https://github.com/bridgs/archery-game",
+		description: "First foray into WebGL, the cylindrical player model is able to shoot arrows at varying speeds and distances.",
+		instructions: "WASD: move, Click and drag player: fire arrow, C: change camera",
+		grid: {
+			previewImageUrl: "/img/archery-game/still.gif",
+			imageUrl: "/img/archery-game/animated.gif",
+			tiles: ["XX","XX","XX","XX","XX","XX","XX"]
+		},
+		content: {
+			type: "iframe",
+			url: "http://brid.gs:3006/",
+			width: 500,
+			height: 500,
+			x: 0,
+			y: 0
+		}
+	}, {
+		id: "spider-game",
+		title: "Spider game",
+		timePeriod: "September 2014",
+		medium: "Node.js",
+		repoUrl: "https://github.com/bridgs/spider-game",
+		description: "A simple spider web simulation thrown together during a family vacation.",
+		instructions: "WASD: move, Shift: lay web",
+		grid: {
+			previewImageUrl: "/img/spider-game/still.gif",
+			imageUrl: "/img/spider-game/animated.gif",
+			tiles: ["XX","XX"]
+		},
+		content: {
+			type: "iframe",
+			url: "http://brid.gs:3004/",
+			width: 450,
 			height: 450,
 			x: 0,
 			y: 0
 		}
-	}*/
+	}, {
+		id: "paradox-anomaly",
+		title: "Paradox: Anomaly",
+		timePeriod: "December 2014",
+		medium: "Node.js",
+		repoUrl: "https://github.com/bridgs/paradox-anomaly",
+		description: "A tile-based puzzle game invovling time travel. The final product would revolve around solving puzzles while avoiding paradoxes that would be caused by interfering with your past self.",
+		instructions: "WASD: move, Z: use/drop item, X: return to the past",
+		grid: {
+			previewImageUrl: "/img/paradox-anomaly/still.gif",
+			imageUrl: "/img/paradox-anomaly/animated.gif",
+			tiles: ["XXXX","XXXX","XXXX","XXXX"]
+		},
+		content: {
+			type: "iframe",
+			url: "http://brid.gs:3005/",
+			width: 640,
+			height: 500,
+			x: 80,
+			y: 50
+		}
+	}
 ];
