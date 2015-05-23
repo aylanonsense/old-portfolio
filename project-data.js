@@ -1,5 +1,131 @@
 module.exports = [
 	{
+		id: "virtual-pet",
+		title: "Virtual Pet",
+		timePeriod: "2004",
+		medium: "ActionScript",
+		repoUrl: null,
+		description: "Animation test for a virtual pet game.",
+		instructions: null,
+		grid: {
+			previewImageUrl: "/img/virtual-pet/still.gif",
+			imageUrl: "/img/virtual-pet/animated.gif",
+			tiles: ["XX","XX","XX","XX"]
+		},
+		content: {
+			type: "iframe",
+			url: "/repos/virtual-pet/virtual-pet.swf",
+			width: 600,
+			height: 450,
+			x: 0,
+			y: 0
+		}
+	}, {
+		id: "sticky-wiki",
+		title: "Sticky Wiki",
+		timePeriod: "September 2013",
+		medium: "Node.js",
+		repoUrl: "https://github.com/bridgs/sticky-wiki",
+		description: "TEST TEST",
+		instructions: null,
+		grid: {
+			previewImageUrl: "/img/sticky-wiki/still.gif",
+			imageUrl: "/img/sticky-wiki/animated.gif",
+			tiles: ["XX","XX","XX","XX"]
+		},
+		content: {
+			type: "iframe",
+			url: "http://brid.gs:3002/",
+			width: 800,
+			height: 600,
+			x: 0,
+			y: 0
+		}
+	}, {
+		id: "sketch-world",
+		title: "Sketch World",
+		timePeriod: "March 2015",
+		medium: "Node.js",
+		repoUrl: "https://github.com/bridgs/sketch-world",
+		description: "TEST TEST",
+		instructions: null,
+		grid: {
+			previewImageUrl: "/img/sketch-world/still.gif",
+			imageUrl: "/img/sketch-world/animated.gif",
+			tiles: ["XXXXXX","XXXXXX","XXXXXX"]
+		},
+		content: {
+			type: "iframe",
+			url: "http://brid.gs:3012/",
+			width: 800,
+			height: 600,
+			x: 0,
+			y: 0
+		}
+	}, {
+		id: "boss-rush-game",
+		title: "Boss rush game",
+		timePeriod: "August to November 2014",
+		medium: "Node.js",
+		repoUrl: "https://github.com/bridgs/boss-rush-game",
+		description: "A platformer intended to be a sequence of boss fights. Only one was fully programmed (with another, a fire queen, in development).",
+		instructions: "Left/Right: move, Space: jump, A: shoot",
+		grid: {
+			previewImageUrl: "/img/boss-rush-game/still.gif",
+			imageUrl: "/img/boss-rush-game/animated.gif",
+			tiles: ["XXXXX","XXXXX","XXXXX"]
+		},
+		content: {
+			type: "iframe",
+			url: "http://brid.gs:3003/",
+			width: 800,
+			height: 570,
+			x: 0,
+			y: 0
+		}
+	}, {
+		id: "alchemy-drop",
+		title: "Alchemy Drop",
+		timePeriod: "September 2013",
+		medium: "Node.js",
+		repoUrl: "https://github.com/bridgs/alchemy-drop",
+		description: "Non-interactive concepts for a block puzzler. The goal was to make a game where as soon as you cleared any tiles, new tiles would be added in such a way that the combo would continue forever.",
+		instructions: null,
+		grid: {
+			previewImageUrl: "/img/alchemy-drop/still.gif",
+			imageUrl: "/img/alchemy-drop/animated.gif",
+			tiles: ["X","X","X"]
+		},
+		content: {
+			type: "iframe",
+			url: "http://brid.gs:3009/",
+			width: 500,
+			height: 500,
+			x: 10,
+			y: 80
+		}
+	}, {
+		id: "grapple-game",
+		title: "Grapple game",
+		timePeriod: "June 2014 to March 2015",
+		medium: "Node.js",
+		repoUrl: "https://github.com/bridgs/grapple-game",
+		description: "A platformer featuring grappling hooks.",
+		instructions: "Left/Right: move, Space: jump, Click: shoot grapple, Shift: pull grapple",
+		grid: {
+			previewImageUrl: "/img/grapple-game/still.gif",
+			imageUrl: "/img/grapple-game/animated.gif",
+			tiles: ["XXXX","XXXX","XXXX","XXXX","XXXX"]
+		},
+		content: {
+			type: "iframe",
+			url: "http://brid.gs:3011/",
+			width: 700,
+			height: 500,
+			x: 50,
+			y: 50
+		}
+	}/*, {
 		id: "paradox-anomaly",
 		title: "Paradox: Anomaly",
 		timePeriod: "December 2014",
@@ -19,27 +145,6 @@ module.exports = [
 			height: 500,
 			x: 80,
 			y: 50
-		}
-	}, {
-		id: "boss-rush-game",
-		title: "Boss rush game",
-		timePeriod: "August to November 2014",
-		medium: "Node.js",
-		repoUrl: "https://github.com/bridgs/boss-rush-game",
-		description: "A platformer intended to be a sequence of boss fights. Only one was fully programmed (with another, a fire queen, in development).",
-		instructions: "Left/Right: move, Space: jump, A: shoot",
-		grid: {
-			previewImageUrl: "/img/boss-rush-game/sepia.gif",
-			imageUrl: "/img/boss-rush-game/animated.gif",
-			tiles: ["XXXXXX","XXXXXX","XXXXXX"]
-		},
-		content: {
-			type: "iframe",
-			url: "http://brid.gs:3003/",
-			width: 800,
-			height: 570,
-			x: 0,
-			y: 0
 		}
 	}, {
 		id: "spider-game",
@@ -126,27 +231,6 @@ module.exports = [
 			y: 15
 		}
 	}, {
-		id: "alchemy-drop",
-		title: "Alchemy Drop",
-		timePeriod: "September 2013",
-		medium: "Node.js",
-		repoUrl: "https://github.com/bridgs/alchemy-drop",
-		description: "Non-interactive concepts for a block puzzler. The goal was to make a game where as soon as you cleared any tiles, new tiles would be added in such a way that the combo would continue forever.",
-		instructions: null,
-		grid: {
-			previewImageUrl: "/img/alchemy-drop/sepia.gif",
-			imageUrl: "/img/alchemy-drop/animated.gif",
-			tiles: ["XX","XX"]
-		},
-		content: {
-			type: "iframe",
-			url: "http://brid.gs:3009/",
-			width: 500,
-			height: 500,
-			x: 10,
-			y: 80
-		}
-	}, {
 		id: "minisnake",
 		title: "minisnake",
 		timePeriod: "September 2014",
@@ -166,27 +250,6 @@ module.exports = [
 			height: 400,
 			x: 8,
 			y: 9
-		}
-	}, {
-		id: "grapple-game",
-		title: "Grapple game",
-		timePeriod: "June 2014 to March 2015",
-		medium: "Node.js",
-		repoUrl: "https://github.com/bridgs/grapple-game",
-		description: "A platformer featuring grappling hooks.",
-		instructions: "Left/Right: move, Space: jump, Click: shoot grapple, Shift: pull grapple",
-		grid: {
-			previewImageUrl: "/img/grapple-game/sepia.gif",
-			imageUrl: "/img/grapple-game/animated.gif",
-			tiles: ["XXXX","XXXX","XXXX","XXXX"]
-		},
-		content: {
-			type: "iframe",
-			url: "http://brid.gs:3011/",
-			width: 700,
-			height: 500,
-			x: 50,
-			y: 50
 		}
 	}, {
 		id: "tranquilime",
@@ -251,5 +314,5 @@ module.exports = [
 			x: 0,
 			y: 0
 		}
-	}
+	}*/
 ];

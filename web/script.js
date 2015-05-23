@@ -105,7 +105,7 @@ $(document).ready(function() {
 		numColumnsCurrentlyRendered = numColumns;
 
 		//resize body to make space for repositionEd shapes
-		shapeContainer.width(tileSize.margin + numColumns * (tileSize.width + tileSize.margin));
+		shapeContainer.width(numColumns * (tileSize.width + tileSize.margin));
 
 		//let's create a grid of what tiles HAVE been filled so far
 		var numRows = 1;
@@ -125,8 +125,8 @@ $(document).ready(function() {
 			//move the shape
 			projects[i].shape.css({
 				position: 'absolute',
-				top: position.row * tileSize.height + (position.row - 1) * tileSize.margin,
-				left: position.col * tileSize.width + (position.col - 1) * tileSize.margin
+				top: position.row * (tileSize.height + tileSize.margin),
+				left: position.col * (tileSize.width + tileSize.margin)
 			});
 		}
 	}

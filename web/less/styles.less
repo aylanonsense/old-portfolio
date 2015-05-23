@@ -1,12 +1,15 @@
-@tile-width: 75px;
-@tile-height: 75px;
-@tile-margin: 0px;
+@tile-width: 60px;
+@tile-height: 60px;
+@tile-margin: 12px;
 
 html, body, #shapes {
 	height: 100%;
 }
 body {
-	background-color: #fcfbfa;
+	padding: 20px 10px;
+	background-color: #ed309b;
+	// background-image: url('/img/pink-swirl.png');
+	// background-repeat: repeat;
 	&.no-scroll {
 		overflow: hidden
 	}
@@ -16,27 +19,29 @@ body {
 	padding: 0;
 	position: relative;
 }
-.shape {
-	position: relative;
-    background-repeat: no-repeat;
-    background-position: @tile-margin / 2 @tile-margin / 2;
-	.tiles {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		.tile {
-			z-index: 2;
+#shapes {
+	.shape {
+		position: relative;
+	    background-repeat: no-repeat;
+	    background-position: @tile-margin / 2 @tile-margin / 2;
+		.tiles {
 			position: absolute;
-			cursor: pointer;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			.tile {
+				z-index: 2;
+				position: absolute;
+				cursor: pointer;
+			}
 		}
-	}
-	img {
-		position: absolute;
-		top: @tile-margin / 2;
-		left: @tile-margin / 2;
-		opacity: 0.0;
+		img {
+			position: absolute;
+			top: @tile-margin / 2;
+			left: @tile-margin / 2;
+			opacity: 0.0;
+		}
 	}
 }
 #dialog-stuff {
