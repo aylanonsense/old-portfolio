@@ -62,7 +62,7 @@ $(document).ready(function() {
 	});
 
 	//when you click in the dark area around the dialog, close the dialog
-	$('.dialog').on('click', function(evt) {
+	$('.dialog, .dialog .body').on('click', function(evt) {
 		if(evt.target === this) {
 			closeDialog();
 		}

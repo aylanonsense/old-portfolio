@@ -57,8 +57,8 @@ module.exports = [
 		content: {
 			type: "iframe",
 			url: "http://brid.gs:3004/",
-			width: 800,
-			height: 600,
+			width: 450,
+			height: 450,
 			x: 0,
 			y: 0
 		}
@@ -78,8 +78,8 @@ module.exports = [
 		content: {
 			type: "iframe",
 			url: "http://brid.gs:3006/",
-			width: 800,
-			height: 600,
+			width: 500,
+			height: 500,
 			x: 0,
 			y: 0
 		}
@@ -120,10 +120,10 @@ module.exports = [
 		content: {
 			type: "iframe",
 			url: "http://brid.gs:3007/",
-			width: 800,
-			height: 550,
+			width: 600,
+			height: 450,
 			x: 0,
-			y: 0
+			y: 15
 		}
 	}, {
 		id: "alchemy-drop",
@@ -227,8 +227,8 @@ module.exports = [
 			url: "http://brid.gs:3010/",
 			width: 800,
 			height: 600,
-			x: 0,
-			y: 0
+			x: 7,
+			y: 3
 		}
 	}, {
 		id: "zombie-aflockalypse",
