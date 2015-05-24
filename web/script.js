@@ -10,8 +10,9 @@ $(document).ready(function() {
 
 	//constants
 	var MIN_COLUMNS = 4;
-	var TILE_IMAGE_FADE_IN_TIME = 500;
-	var TILE_IMAGE_FADE_OUT_TIME = 500;
+	var TILE_IMAGE_FADE_IN_TIME = 400;
+	var TILE_IMAGE_FADE_DELAY = 1000;
+	var TILE_IMAGE_FADE_OUT_TIME = 400;
 	var TILE_RESIZE_DELAY = 250;
 	var DIALOG_CONTENT_DEFAULT_WIDTH = 200;
 	var DIALOG_CONTENT_DEFAULT_HEIGHT = 200;
@@ -51,14 +52,27 @@ $(document).ready(function() {
 	//bind events when a shape is moused over or clicked
 	projects.forEach(function(project) {
 		var img = project.shape.find('img');
+		var timer = null;
 		project.shape
 			//on hover, fade in the saturated/animated image
 			.on('mouseenter', function() {
+				if(timer) {
+					clearTimeout(timer);
+					timer = null;
+				}
 				img.stop().fadeTo(Math.floor(TILE_IMAGE_FADE_IN_TIME * (1.0 - +img.css('opacity'))), 1.0);
 			})
 			//when the mouse leaves the shape, fade out the saturated/animated image
 			.on('mouseleave', function() {
-				img.stop().fadeTo(Math.floor(TILE_IMAGE_FADE_OUT_TIME * +img.css('opacity')), 0.0);
+				//it'd be nice to use the .delay() jQuery function, but it has a couple problems
+				if(timer) {
+					clearTimeout(timer);
+					timer = null;
+				}
+				timer = setTimeout(function() {
+					timer = null;
+					img.fadeTo(TILE_IMAGE_FADE_OUT_TIME, 0.0);
+				}, TILE_IMAGE_FADE_DELAY);
 			})
 			//when a shape is clicked, open the project dialog
 			.on('click', function() {
@@ -101,8 +115,13 @@ $(document).ready(function() {
 	//reposition shapes such that they all fit together nice and pretty without any gaps
 	var numColumnsCurrentlyRendered = null;
 	function repositionShapes() {
+		//figure out width of content area based on width of body
+		var contentWidth = body.width();
+		if(contentWidth > 600) {
+			contentWidth = 600 + (contentWidth - 600) / 2;
+		}
 		//we only need to reposition the shapes if we change the number of columns displayed
-		var numColumns = Math.max(MIN_COLUMNS, Math.floor((body.width() - tileSize.margin) /
+		var numColumns = Math.max(MIN_COLUMNS, Math.floor((contentWidth - tileSize.margin) /
 			(tileSize.width + tileSize.margin)));
 		if(numColumnsCurrentlyRendered === numColumns) {
 			return;

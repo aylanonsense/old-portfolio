@@ -8,7 +8,7 @@ module.exports = [
 		description: "A platformer featuring grappling hooks.",
 		instructions: "Left/Right: move, Space: jump, Click: shoot grapple, Shift: pull grapple",
 		grid: {
-			previewImageUrl: "/img/grapple-game/still.gif",
+			previewImageUrl: "/img/grapple-game/grey.gif",
 			imageUrl: "/img/grapple-game/animated.gif",
 			tiles: ["XXXX","XXXX","XXXX","XXXX","XXXX"]
 		},
@@ -29,17 +29,17 @@ module.exports = [
 		description: "TEST TEST",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/sketch-world/still.gif",
+			previewImageUrl: "/img/sketch-world/grey.gif",
 			imageUrl: "/img/sketch-world/animated.gif",
 			tiles: ["XXXXXX","XXXXXX","XXXXXX"]
 		},
 		content: {
 			type: "iframe",
 			url: "http://brid.gs:3012/",
-			width: 800,
-			height: 600,
+			width: 700,
+			height: 500,
 			x: 0,
-			y: 0
+			y: 15
 		}
 	}, {
 		id: "processing-sketchbook",
@@ -50,7 +50,7 @@ module.exports = [
 		description: "Some doodles to get acquainted with Processing.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/processing-sketchbook/still.gif",
+			previewImageUrl: "/img/processing-sketchbook/grey.gif",
 			imageUrl: "/img/processing-sketchbook/animated.gif",
 			tiles: ["XX","XX"]
 		},
@@ -71,7 +71,7 @@ module.exports = [
 		description: "Testing frame-by-frame hitboxes to see how that would feel.",
 		instructions: "Left/Right: move, Space: jump, Z: swing",
 		grid: {
-			previewImageUrl: "/img/breakout-ball/still.gif",
+			previewImageUrl: "/img/breakout-ball/grey.gif",
 			imageUrl: "/img/breakout-ball/animated.gif",
 			tiles: ["XXX","XXX"]
 		},
@@ -92,7 +92,7 @@ module.exports = [
 		description: "A tile-based puzzle game invovling time travel. The final product would revolve around solving puzzles while avoiding paradoxes that would be caused by interfering with your past self.",
 		instructions: "WASD: move, Z: use/drop item, X: return to the past",
 		grid: {
-			previewImageUrl: "/img/paradox-anomaly/still.gif",
+			previewImageUrl: "/img/paradox-anomaly/grey.gif",
 			imageUrl: "/img/paradox-anomaly/animated.gif",
 			tiles: ["XXXX","XXXX","XXXX","XXXX"]
 		},
@@ -113,7 +113,7 @@ module.exports = [
 		description: "A platformer intended to be a sequence of boss fights. Only one was fully programmed (with another, a fire queen, in development).",
 		instructions: "Left/Right: move, Space: jump, A: shoot",
 		grid: {
-			previewImageUrl: "/img/boss-rush-game/still.gif",
+			previewImageUrl: "/img/boss-rush-game/grey.gif",
 			imageUrl: "/img/boss-rush-game/animated.gif",
 			tiles: ["XXXXX","XXXXX","XXXXX"]
 		},
@@ -134,7 +134,7 @@ module.exports = [
 		description: "A multiplayer spaceship simulator. The end product would give each player their own dashboard and controls for specific parts of the ship as it hurtled through space.",
 		instructions: "Control thrusters with mouse",
 		grid: {
-			previewImageUrl: "/img/space-team-galaxy-explorer/still.gif",
+			previewImageUrl: "/img/space-team-galaxy-explorer/grey.gif",
 			imageUrl: "/img/space-team-galaxy-explorer/animated.gif",
 			tiles: ["XXXXX","XXXXX","XXXXX","XXXXX"]
 		},
@@ -155,7 +155,7 @@ module.exports = [
 		description: "An exercise in <a href=\"http://en.wikipedia.org/wiki/Code_golf\" target=\"_blank\">code golf</a>. The goal was to implement a minimalist version of Snake in the fewest characters possible. The version above is 623 characters minified.",
 		instructions: "Arrow keys: move",
 		grid: {
-			previewImageUrl: "/img/minisnake/still.gif",
+			previewImageUrl: "/img/minisnake/grey.gif",
 			imageUrl: "/img/minisnake/animated.gif",
 			tiles: ["XXX"]
 		},
@@ -176,7 +176,7 @@ module.exports = [
 		description: "A simple spider web simulation thrown together during a family vacation.",
 		instructions: "WASD: move, Shift: lay web",
 		grid: {
-			previewImageUrl: "/img/spider-game/still.gif",
+			previewImageUrl: "/img/spider-game/grey.gif",
 			imageUrl: "/img/spider-game/animated.gif",
 			tiles: ["XX","XX"]
 		},
@@ -197,7 +197,7 @@ module.exports = [
 		description: "First foray into WebGL, the cylindrical player model is able to shoot arrows at varying speeds and distances.",
 		instructions: "WASD: move, Click and drag player: fire arrow, C: change camera",
 		grid: {
-			previewImageUrl: "/img/archery-game/still.gif",
+			previewImageUrl: "/img/archery-game/grey.gif",
 			imageUrl: "/img/archery-game/animated.gif",
 			tiles: ["XX","XX","XX","XX","XX","XX","XX"]
 		},
@@ -218,7 +218,7 @@ module.exports = [
 		description: "Code4Health 2013 hackathon submission. Our team of two created a site for giving comfort to those in need. The final version would have pulled requests for comfort from Twitter and posted the responses anonymously.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/tranquilime/still.gif",
+			previewImageUrl: "/img/tranquilime/grey.gif",
 			imageUrl: "/img/tranquilime/animated.gif",
 			tiles: ["XXXX","XXXX"]
 		},
@@ -239,7 +239,7 @@ module.exports = [
 		description: "TEST TEST",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/sticky-wiki/still.gif",
+			previewImageUrl: "/img/sticky-wiki/grey.gif",
 			imageUrl: "/img/sticky-wiki/animated.gif",
 			tiles: ["XX","XX","XX","XX"]
 		},
@@ -260,7 +260,7 @@ module.exports = [
 		description: "Non-interactive concepts for a block puzzler. The goal was to make a game where as soon as you cleared any tiles, new tiles would be added in such a way that the combo would continue forever.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/alchemy-drop/still.gif",
+			previewImageUrl: "/img/alchemy-drop/grey.gif",
 			imageUrl: "/img/alchemy-drop/animated.gif",
 			tiles: ["X","X","X"]
 		},
@@ -281,7 +281,7 @@ module.exports = [
 		description: "College submission for a flocking simulation. The zombies (green dots) are programmed to seek out humans (blue dots) while the humans are programmed to stick together and avoid zombies.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/zombie-aflockalypse/still.gif",
+			previewImageUrl: "/img/zombie-aflockalypse/grey.gif",
 			imageUrl: "/img/zombie-aflockalypse/animated.gif",
 			tiles: ["XXX","XXX","XXX"]
 		},
@@ -302,7 +302,7 @@ module.exports = [
 		description: "A little hex world with customizable terrain.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/hex-game/still.gif",
+			previewImageUrl: "/img/hex-game/grey.gif",
 			imageUrl: "/img/hex-game/animated.gif",
 			tiles: ["XX"]
 		},
@@ -323,7 +323,7 @@ module.exports = [
 		description: "Random doodle of a blob.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/blob-animation/still.gif",
+			previewImageUrl: "/img/blob-animation/grey.gif",
 			imageUrl: "/img/blob-animation/animated.gif",
 			tiles: ["X"]
 		},
@@ -341,10 +341,10 @@ module.exports = [
 		timePeriod: "2006",
 		medium: "ActionScript",
 		repoUrl: null,
-		description: "The beginnings of my first ever successful physics engine.",
+		description: "The beginnings of my first ever physics engine.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/phys-engine/still.gif",
+			previewImageUrl: "/img/phys-engine/grey.gif",
 			imageUrl: "/img/phys-engine/animated.gif",
 			tiles: ["X","X"]
 		},
@@ -365,7 +365,7 @@ module.exports = [
 		description: "An extremely esoteric math game.",
 		instructions: "Click stems of fruit to... do a whole bunch of stuff",
 		grid: {
-			previewImageUrl: "/img/efflorescence/still.gif",
+			previewImageUrl: "/img/efflorescence/grey.gif",
 			imageUrl: "/img/efflorescence/animated.gif",
 			tiles: ["XX","XX"]
 		},
@@ -386,7 +386,7 @@ module.exports = [
 		description: "An experimental take on Minesweeper for <a href=\"http://playwithyourmind.com/\" target=\"_blank\">Play With Your Mind</a>.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/mindsweeper/still.gif",
+			previewImageUrl: "/img/mindsweeper/grey.gif",
 			imageUrl: "/img/mindsweeper/animated.gif",
 			tiles: ["XX","XX"]
 		},
@@ -407,7 +407,7 @@ module.exports = [
 		description: "Animation test for a virtual pet game.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/virtual-pet/still.gif",
+			previewImageUrl: "/img/virtual-pet/grey.gif",
 			imageUrl: "/img/virtual-pet/animated.gif",
 			tiles: ["XX","XX","XX","XX"]
 		},
