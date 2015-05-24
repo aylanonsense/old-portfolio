@@ -152,7 +152,7 @@ module.exports = [
 		timePeriod: "September 2014",
 		medium: "JavaScript",
 		repoUrl: "https://github.com/bridgs/minisnake",
-		description: "An exercise in <a href=\"http://en.wikipedia.org/wiki/Code_golf\">code golf</a>. The goal was to implement a minimalist version of Snake in the fewest characters possible. The version above is 623 characters minified.",
+		description: "An exercise in <a href=\"http://en.wikipedia.org/wiki/Code_golf\" target=\"_blank\">code golf</a>. The goal was to implement a minimalist version of Snake in the fewest characters possible. The version above is 623 characters minified.",
 		instructions: "Arrow keys: move",
 		grid: {
 			previewImageUrl: "/img/minisnake/still.gif",
@@ -313,6 +313,111 @@ module.exports = [
 			height: 500,
 			x: 80,
 			y: 50
+		}
+	}, {
+		id: "blob-animation",
+		title: "Untitled",
+		timePeriod: "2007",
+		medium: "Flash",
+		repoUrl: null,
+		description: "Random doodle of a blob.",
+		instructions: null,
+		grid: {
+			previewImageUrl: "/img/blob-animation/still.gif",
+			imageUrl: "/img/blob-animation/animated.gif",
+			tiles: ["X"]
+		},
+		content: {
+			type: "iframe",
+			url: "/repos/blob-animation/blob-animation.swf",
+			width: 350,
+			height: 350,
+			x: 0,
+			y: 0
+		}
+	}, {
+		id: "efflorescence",
+		title: "Efflorescence",
+		timePeriod: "2005",
+		medium: "ActionScript",
+		repoUrl: null,
+		description: "An extremely esoteric math game.",
+		instructions: "Click stems of fruit to... do a whole bunch of stuff",
+		grid: {
+			previewImageUrl: "/img/efflorescence/still.gif",
+			imageUrl: "/img/efflorescence/animated.gif",
+			tiles: ["XX","XX"]
+		},
+		content: {
+			type: "iframe",
+			url: "/repos/efflorescence/efflorescence.swf",
+			width: 700,
+			height: 350,
+			x: 0,
+			y: 0
+		}
+	}, {
+		id: "hex-game",
+		title: "Hex game",
+		timePeriod: "2009",
+		medium: "ActionScript",
+		repoUrl: null,
+		description: "A little hex world with customizable terrain.",
+		instructions: null,
+		grid: {
+			previewImageUrl: "/img/hex-game/still.gif",
+			imageUrl: "/img/hex-game/animated.gif",
+			tiles: ["XX"]
+		},
+		content: {
+			type: "iframe",
+			url: "/repos/hex-game/hex-game.swf",
+			width: 500,
+			height: 400,
+			x: 0,
+			y: 0
+		}
+	}, {
+		id: "mindsweeper",
+		title: "Mindsweeper",
+		timePeriod: "2005",
+		medium: "ActionScript",
+		repoUrl: null,
+		description: "An experimental take on Minesweeper for <a href=\"http://playwithyourmind.com/\" target=\"_blank\">Play With Your Mind</a>.",
+		instructions: null,
+		grid: {
+			previewImageUrl: "/img/mindsweeper/still.gif",
+			imageUrl: "/img/mindsweeper/animated.gif",
+			tiles: ["XX","XX"]
+		},
+		content: {
+			type: "iframe",
+			url: "/repos/mindsweeper/mindsweeper.swf",
+			width: 495,
+			height: 450,
+			x: 0,
+			y: 0
+		}
+	}, {
+		id: "phys-engine",
+		title: "Untitled",
+		timePeriod: "2006",
+		medium: "ActionScript",
+		repoUrl: null,
+		description: "The beginnings of my first ever successful physics engine.",
+		instructions: null,
+		grid: {
+			previewImageUrl: "/img/phys-engine/still.gif",
+			imageUrl: "/img/phys-engine/animated.gif",
+			tiles: ["X","X"]
+		},
+		content: {
+			type: "iframe",
+			url: "/repos/phys-engine/phys-engine.swf",
+			width: 495,
+			height: 450,
+			x: 0,
+			y: 0
 		}
 	}
 ];

@@ -155,7 +155,6 @@ $(document).ready(function() {
 		}
 		//we return the best spot
 		if(highestScoringPosition) {
-			console.log(highScore);
 			return highestScoringPosition;
 		}
 		//if we couldn't find a spot for the shape it means it's too wide to fit
