@@ -26,7 +26,7 @@ module.exports = [
 		timePeriod: "March 2015",
 		medium: "Node.js",
 		repoUrl: "https://github.com/bridgs/sketch-world",
-		description: "TEST TEST",
+		description: "A multiplayer 2D platformer with a persistent player-created world.",
 		instructions: null,
 		grid: {
 			previewImageUrl: "/img/sketch-world/grey.gif",
@@ -234,9 +234,9 @@ module.exports = [
 		id: "sticky-wiki",
 		title: "Sticky Wiki",
 		timePeriod: "September 2013",
-		medium: "Node.js",
+		medium: "Node.js, SVG",
 		repoUrl: "https://github.com/bridgs/sticky-wiki",
-		description: "TEST TEST",
+		description: "A virtual message board.",
 		instructions: null,
 		grid: {
 			previewImageUrl: "/img/sticky-wiki/grey.gif",
