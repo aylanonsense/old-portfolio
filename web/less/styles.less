@@ -5,21 +5,33 @@
 html, body, #shapes {
 	height: 100%;
 }
+#main-header {
+	background-color: red;
+	width: 100%;
+	height: 88px;
+	position: absolute;
+	top: 0;
+}
+#main-footer {
+	background-color: blue;
+	width: 100%;
+	height: 88px;
+	position: absolute;
+	bottom: 0;
+}
 body {
-	padding: 20px 10px;
-	background-color: #fff;
-	background-image: url('/img/pink-swirl.png');
-	background-repeat: repeat;
+	padding: 0;
+	margin: 0;
+	background-color: #fcfcfc;
+	// background-image: url('/img/white-swirl.png');
+	// background-repeat: repeat;
 	&.no-scroll {
 		overflow: hidden
 	}
 }
 #shapes {
-	margin: 0 auto;
-	padding: 0;
+	margin: 100px auto 20px auto;
 	position: relative;
-}
-#shapes {
 	.shape {
 		position: relative;
 	    background-repeat: no-repeat;
@@ -45,11 +57,12 @@ body {
 	}
 }
 #dialog-stuff {
+	opacity: 0.0;
 	.screen {
 		z-index: 3;
 		position: fixed;
-		background-color: #000;
-		opacity: 0.7;
+		background-color: #ffd200;
+		opacity: 0.8;
 		top: 0;
 		bottom: 0;
 		left: 0;
@@ -112,19 +125,37 @@ body {
 			width: 100%;
 			height: 90%;
 			.content {
+				position: relative;
 				background-color: #292929;
 				background-image: url('/img/dialog-content-bg.jpg');
 				background-repeat: no-repeat;
 				background-position: center;
 				border: 3px solid #454545;
 				box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+				.show-details {
+					opacity: 0.0;
+					display: none;
+					color: yellow;
+					position: absolute;
+					bottom: -37px;
+					right: 0;
+					font-size: 10pt;
+					font-weight: 100;
+					a {
+						color: #000;
+						opacity: 0.4;
+						&:hover {
+							opacity: 1.0;
+						}
+					}
+				}
 			}
 			.details {
+				position: relative;
 				background-color: #fcfbfa;
 				width: 300px;
-				min-height: 110px;
 				margin: 12px 17px 0 17px;
-				padding: 12px 12px 7px 12px;
+				padding: 15px;
 				font-family: 'Roboto', sans-serif;
 				box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
 				h2 {
@@ -152,6 +183,21 @@ body {
 					font-size: 10pt;
 					font-weight: 100;
 					font-style: italic;
+				}
+				.hide-details {
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					font-size: 10pt;
+					font-weight: 100;
+					margin: 5px;
+					a {
+						color: #ddd;
+						text-decoration: none;
+						&:hover {
+							color: #aaa;
+						}
+					}
 				}
 			}
 		}

@@ -11,15 +11,20 @@ $(document).ready(function() {
 	//constants
 	var MIN_COLUMNS = 4;
 	var TILE_IMAGE_FADE_IN_TIME = 400;
-	var TILE_IMAGE_FADE_DELAY = 1000;
 	var TILE_IMAGE_FADE_OUT_TIME = 400;
 	var TILE_RESIZE_DELAY = 250;
+	var TILE_REPOSITION_TIME = 250;
 	var DIALOG_CONTENT_DEFAULT_WIDTH = 200;
 	var DIALOG_CONTENT_DEFAULT_HEIGHT = 200;
-	var DIALOG_FADE_IN_TIME = 200;
-	var DIALOG_FADE_OUT_TIME = 200;
+	var DIALOG_FADE_IN_TIME = 500;
+	var DIALOG_FADE_OUT_TIME = 400;
 	var DIALOG_SWITCH_TIME = 600;
 	var DIALOG_EXTRA_SWITCH_DIST = 600;
+	var DIALOG_DETAILS_HIDE_TIME = 500;
+	var DIALOG_DETAILS_SHOW_TIME = 500;
+	var DIALOG_SHOW_DETAILS_FADE_IN_TIME = 500;
+	var DIALOG_SHOW_DETAILS_FADE_OUT_TIME = 500;
+	var DIALOG_EXTRA_CONTENT_LOAD_TIME = 300;
 
 	//gather jQuery references to elements
 	var body = $(document.body);
@@ -42,7 +47,11 @@ $(document).ready(function() {
 			repoLink: dialog.find('.repo-link'),
 			description: dialog.find('.description'),
 			instructions: dialog.find('.instructions'),
-			content: dialog.find('.content')
+			content: dialog.find('.content'),
+			actualContent: dialog.find('.actual-content'),
+			hideDetailsLink: dialog.find('.hide-details a'),
+			showDetailsArea: dialog.find('.show-details'),
+			showDetailsLink: dialog.find('.show-details a')
 		};
 	});
 	projects.forEach(function(project) {
@@ -52,27 +61,14 @@ $(document).ready(function() {
 	//bind events when a shape is moused over or clicked
 	projects.forEach(function(project) {
 		var img = project.shape.find('img');
-		var timer = null;
 		project.shape
 			//on hover, fade in the saturated/animated image
 			.on('mouseenter', function() {
-				if(timer) {
-					clearTimeout(timer);
-					timer = null;
-				}
 				img.stop().fadeTo(Math.floor(TILE_IMAGE_FADE_IN_TIME * (1.0 - +img.css('opacity'))), 1.0);
 			})
 			//when the mouse leaves the shape, fade out the saturated/animated image
 			.on('mouseleave', function() {
-				//it'd be nice to use the .delay() jQuery function, but it has a couple problems
-				if(timer) {
-					clearTimeout(timer);
-					timer = null;
-				}
-				timer = setTimeout(function() {
-					timer = null;
-					img.fadeTo(TILE_IMAGE_FADE_OUT_TIME, 0.0);
-				}, TILE_IMAGE_FADE_DELAY);
+				img.stop().fadeTo(Math.floor(TILE_IMAGE_FADE_OUT_TIME * (+img.css('opacity'))), 0.0);
 			})
 			//when a shape is clicked, open the project dialog
 			.on('click', function() {
@@ -81,6 +77,20 @@ $(document).ready(function() {
 	});
 
 	//when you click in the dark area around the dialog, close the dialog
+	var dialogDetailsAreHidden = false;
+	dialogs.forEach(function(dialog) {
+		dialog.hideDetailsLink.on('click', function() {
+			dialog.details.slideUp(DIALOG_DETAILS_HIDE_TIME, function() {
+				dialog.showDetailsArea.stop().show().fadeTo(DIALOG_SHOW_DETAILS_FADE_IN_TIME, 1.0);
+			});
+			dialogDetailsAreHidden = true;
+		});
+		dialog.showDetailsLink.on('click', function() {
+			dialog.details.slideDown(DIALOG_DETAILS_SHOW_TIME);
+			dialog.showDetailsArea.stop().fadeTo(DIALOG_SHOW_DETAILS_FADE_OUT_TIME, 0.0);
+			dialogDetailsAreHidden = false;
+		});
+	});
 	$('.dialog, .dialog .body').on('click', function(evt) {
 		if(evt.target === this) {
 			closeDialog();
@@ -96,7 +106,7 @@ $(document).ready(function() {
 			if(timeOfLastResizeEvent === null) {
 				resizeTimer = null;
 				//page resizing has settled down -- reposition the shapes!
-				repositionShapes();
+				repositionShapes(dialogState !== 'closed');
 			}
 			else {
 				resetResizeTimer(TILE_RESIZE_DELAY + timeOfLastResizeEvent - Date.now());
@@ -114,11 +124,11 @@ $(document).ready(function() {
 
 	//reposition shapes such that they all fit together nice and pretty without any gaps
 	var numColumnsCurrentlyRendered = null;
-	function repositionShapes() {
+	function repositionShapes(immediately) {
 		//figure out width of content area based on width of body
 		var contentWidth = body.width();
-		if(contentWidth > 600) {
-			contentWidth = 600 + (contentWidth - 600) / 2;
+		if(contentWidth > 500) {
+			contentWidth = 500 + (contentWidth - 500) / 2;
 		}
 		//we only need to reposition the shapes if we change the number of columns displayed
 		var numColumns = Math.max(MIN_COLUMNS, Math.floor((contentWidth - tileSize.margin) /
@@ -148,11 +158,19 @@ $(document).ready(function() {
 			numRows = Math.max(numRows, position.row + shapeHeight + 1);
 
 			//move the shape
-			project.shape.css({
-				position: 'absolute',
-				top: position.row * (tileSize.height + tileSize.margin),
-				left: position.col * (tileSize.width + tileSize.margin)
-			});
+			if(immediately) {
+				project.shape.css({
+					position: 'absolute',
+					top: position.row * (tileSize.height + tileSize.margin),
+					left: position.col * (tileSize.width + tileSize.margin)
+				});
+			}
+			else {
+				project.shape.css('position', 'absolute').animate({
+					top: position.row * (tileSize.height + tileSize.margin),
+					left: position.col * (tileSize.width + tileSize.margin)
+				}, TILE_REPOSITION_TIME);
+			}
 		});
 	}
 	function findPositionForTiles(tiles, grid, numRows, numColumns) {
@@ -269,11 +287,23 @@ $(document).ready(function() {
 			//load the data into the dialog
 			preloadProjectIntoDialog(project, activeDialog);
 
+			//make sure details are shown/hidden properly
+			if(dialogDetailsAreHidden) {
+				activeDialog.details.hide();
+				activeDialog.showDetailsArea.css('opacity', '1.0').show();
+			}
+			else {
+				activeDialog.details.show();
+				activeDialog.showDetailsArea.css('opacity', '0.0').hide();
+			}
+
 			//open the dialog
 			dialogStuff.show().fadeTo(DIALOG_FADE_IN_TIME, 1.0, function() {
 				//fill in the content area only after the dialog is fully visible
-				loadContentIntoDialog(project, activeDialog);
-				dialogState = 'open';
+				setTimeout(function() {
+					loadContentIntoDialog(project, activeDialog);
+					dialogState = 'open';
+				}, DIALOG_EXTRA_CONTENT_LOAD_TIME);
 			});
 		}
 	}
@@ -305,13 +335,25 @@ $(document).ready(function() {
 			activeDialogIndex = 1 - activeDialogIndex;
 			var newActiveDialog = dialogs[activeDialogIndex];
 
+			//make sure details are shown/hidden properly
+			if(dialogDetailsAreHidden) {
+				newActiveDialog.details.hide();
+				newActiveDialog.showDetailsArea.css('opacity', '1.0').show();
+			}
+			else {
+				newActiveDialog.details.show();
+				newActiveDialog.showDetailsArea.css('opacity', '0.0').hide();
+			}
+
 			//slide it onto screen
 			preloadProjectIntoDialog(project, newActiveDialog);
 			positionDialogOffScreen(newActiveDialog, dir);
 			showDialog(newActiveDialog);
 			slideDialogToCenterOfScreen(newActiveDialog, function() {
-				loadContentIntoDialog(project, newActiveDialog);
-				dialogState = 'open';
+				setTimeout(function() {
+					loadContentIntoDialog(project, newActiveDialog);
+					dialogState = 'open';
+				}, DIALOG_EXTRA_CONTENT_LOAD_TIME);
 			});
 		}
 	}
@@ -319,7 +361,7 @@ $(document).ready(function() {
 	//dialog helper functions
 	function preloadProjectIntoDialog(project, dialog) {
 		//resize the content area to fit the content that will be there
-		dialog.content.css({
+		dialog.actualContent.css({
 			width: project.content.width || DIALOG_CONTENT_DEFAULT_WIDTH,
 			height: project.content.height || DIALOG_CONTENT_DEFAULT_HEIGHT
 		});
@@ -351,7 +393,7 @@ $(document).ready(function() {
 						'style="margin-left:' + (-x) + 'px;margin-top:' + (-y) + 'px;"' +
 						'></iframe>' +
 				'</div>')
-				.appendTo(dialog.content).find('iframe').focus();
+				.appendTo(dialog.actualContent).find('iframe').focus();
 		}
 	}
 	function positionDialogInCenterOfScreen(dialog) {
@@ -377,9 +419,9 @@ $(document).ready(function() {
 		dialog.ele.hide();
 	}
 	function emptyDialogContent(dialog) {
-		dialog.content.empty();
+		dialog.actualContent.empty();
 	}
 
 	//when the page loads we reposition shapes into a grid immediately
-	repositionShapes();
+	repositionShapes(true);
 });
