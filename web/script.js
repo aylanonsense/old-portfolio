@@ -370,6 +370,7 @@ $(document).ready(function() {
 	//dialog helper functions
 	function preloadProjectIntoDialog(project, dialog) {
 		//resize the content area to fit the content that will be there
+		dialog.content.css('min-height', project.content.height || DIALOG_CONTENT_DEFAULT_HEIGHT);
 		dialog.actualContent.css({
 			width: project.content.width || DIALOG_CONTENT_DEFAULT_WIDTH,
 			height: project.content.height || DIALOG_CONTENT_DEFAULT_HEIGHT
