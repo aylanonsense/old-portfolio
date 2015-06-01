@@ -7,13 +7,15 @@ $(document).ready(function() {
 	var projectsByShapeSize = projects.slice(0).sort(function(a, b) {
 		return b.grid.area - a.grid.area;
 	});
+	var MAX_SHAPE_WIDTH = Math.max.apply(Math, projects.map(function(project) {
+		return project.grid.width;
+	}));
 
 	//constants
-	var MIN_COLUMNS = 4;
 	var TILE_IMAGE_FADE_IN_TIME = 400;
 	var TILE_IMAGE_FADE_OUT_TIME = 400;
 	var TILE_RESIZE_DELAY = 250;
-	var TILE_REPOSITION_TIME = 250;
+	var TILE_REPOSITION_TIME = 0;
 	var DIALOG_CONTENT_DEFAULT_WIDTH = 200;
 	var DIALOG_CONTENT_DEFAULT_HEIGHT = 200;
 	var DIALOG_FADE_IN_TIME = 500;
@@ -57,6 +59,9 @@ $(document).ready(function() {
 	projects.forEach(function(project) {
 		project.shape = $('#shape-' + project.id);
 	});
+
+	//body cannot be smaller than width of content
+	body.css('min-width', MAX_SHAPE_WIDTH * (tileSize.height + tileSize.margin));
 
 	//bind events when a shape is moused over or clicked
 	projects.forEach(function(project) {
@@ -127,19 +132,13 @@ $(document).ready(function() {
 	function repositionShapes(immediately) {
 		//figure out width of content area based on width of body
 		var contentWidth = body.width();
-		if(contentWidth > 500) {
-			contentWidth = 500 + (contentWidth - 500) / 2;
-		}
 		//we only need to reposition the shapes if we change the number of columns displayed
-		var numColumns = Math.max(MIN_COLUMNS, Math.floor((contentWidth - tileSize.margin) /
+		var numColumns = Math.max(MAX_SHAPE_WIDTH, Math.floor((contentWidth - tileSize.margin) /
 			(tileSize.width + tileSize.margin)));
 		if(numColumnsCurrentlyRendered === numColumns) {
 			return;
 		}
 		numColumnsCurrentlyRendered = numColumns;
-
-		//resize body to make space for repositionEd shapes
-		shapeContainer.width(numColumns * (tileSize.width + tileSize.margin));
 
 		//let's create a grid of what tiles HAVE been filled so far
 		var numRows = 1;
@@ -172,6 +171,16 @@ $(document).ready(function() {
 				}, TILE_REPOSITION_TIME);
 			}
 		});
+
+		//resize body to make space for repositioned shapes
+		var height = (numRows - 1) * (tileSize.height + tileSize.margin);
+		shapeContainer.width(numColumns * (tileSize.width + tileSize.margin));
+		if(immediately) {
+			shapeContainer.height(height);
+		}
+		else {
+			shapeContainer.animate({ height: height }, TILE_REPOSITION_TIME);
+		}
 	}
 	function findPositionForTiles(tiles, grid, numRows, numColumns) {
 		var shapeWidth = Math.max.apply(Math, tiles.map(function(row) { return row.length; }));

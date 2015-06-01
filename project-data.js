@@ -8,7 +8,7 @@ module.exports = [
 		description: "A multiplayer beach volleyball simulation.",
 		instructions: "Space: jump, Z: bump/spike, X: set/block",
 		grid: {
-			previewImageUrl: "/img/beevoobaa/sepia.gif",
+			previewImageUrl: "/img/beevoobaa/yellow.gif",
 			imageUrl: "/img/beevoobaa/animated.gif",
 			tiles: ["XXXXXXX","XXXXXXX","XXXXXXX","XXXXXXX","XXXXXXX"]
 		},
@@ -29,7 +29,7 @@ module.exports = [
 		description: "A platformer featuring grappling hooks.",
 		instructions: "WASD: move, Space: jump, Click: shoot grapple, Shift: pull grapple",
 		grid: {
-			previewImageUrl: "/img/grapple-game/sepia.gif",
+			previewImageUrl: "/img/grapple-game/yellow.gif",
 			imageUrl: "/img/grapple-game/animated.gif",
 			tiles: ["XXXX","XXXX","XXXX","XXXX","XXXX"]
 		},
@@ -50,7 +50,7 @@ module.exports = [
 		description: "A multiplayer 2D platformer with a persistent player-created world.",
 		instructions: "Left/Right: move, Space: jump, Click: make platforms",
 		grid: {
-			previewImageUrl: "/img/sketch-world/sepia.gif",
+			previewImageUrl: "/img/sketch-world/yellow.gif",
 			imageUrl: "/img/sketch-world/animated.gif",
 			tiles: ["XXXXXX","XXXXXX","XXXXXX"]
 		},
@@ -71,7 +71,7 @@ module.exports = [
 		description: "Some doodles to get acquainted with Processing.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/processing-sketchbook/sepia.gif",
+			previewImageUrl: "/img/processing-sketchbook/yellow.gif",
 			imageUrl: "/img/processing-sketchbook/animated.gif",
 			tiles: ["XX","XX"]
 		},
@@ -92,7 +92,7 @@ module.exports = [
 		description: "Testing frame-by-frame hitboxes to see how that would feel.",
 		instructions: "Left/Right: move, Space: jump, Z: swing",
 		grid: {
-			previewImageUrl: "/img/breakout-ball/sepia.gif",
+			previewImageUrl: "/img/breakout-ball/yellow.gif",
 			imageUrl: "/img/breakout-ball/animated.gif",
 			tiles: ["XXX","XXX"]
 		},
@@ -113,7 +113,7 @@ module.exports = [
 		description: "A tile-based puzzle game invovling time travel. The final product would revolve around solving puzzles while avoiding paradoxes that would be caused by interfering with your past self.",
 		instructions: "WASD: move, Z: use/drop item, X: return to the past",
 		grid: {
-			previewImageUrl: "/img/paradox-anomaly/sepia.gif",
+			previewImageUrl: "/img/paradox-anomaly/yellow.gif",
 			imageUrl: "/img/paradox-anomaly/animated.gif",
 			tiles: ["XXXX","XXXX","XXXX","XXXX"]
 		},
@@ -134,7 +134,7 @@ module.exports = [
 		description: "A platformer intended to be a sequence of boss fights. Only one was fully programmed (with another, a fire queen, in development).",
 		instructions: "Left/Right: move, Space: jump, A: shoot",
 		grid: {
-			previewImageUrl: "/img/boss-rush-game/sepia.gif",
+			previewImageUrl: "/img/boss-rush-game/yellow.gif",
 			imageUrl: "/img/boss-rush-game/animated.gif",
 			tiles: ["XXXXX","XXXXX","XXXXX"]
 		},
@@ -155,7 +155,7 @@ module.exports = [
 		description: "A multiplayer spaceship simulator. The end product would give each player their own dashboard and controls for specific parts of the ship as it hurtled through space.",
 		instructions: "Control thrusters with mouse",
 		grid: {
-			previewImageUrl: "/img/space-team-galaxy-explorer/sepia.gif",
+			previewImageUrl: "/img/space-team-galaxy-explorer/yellow.gif",
 			imageUrl: "/img/space-team-galaxy-explorer/animated.gif",
 			tiles: ["XXXXX","XXXXX","XXXXX","XXXXX"]
 		},
@@ -176,7 +176,7 @@ module.exports = [
 		description: "An exercise in <a href=\"http://en.wikipedia.org/wiki/Code_golf\" target=\"_blank\">code golf</a>. The goal was to implement a minimalist version of Snake in the fewest characters possible. The version above is 623 characters minified.",
 		instructions: "Arrow keys: move",
 		grid: {
-			previewImageUrl: "/img/minisnake/sepia.gif",
+			previewImageUrl: "/img/minisnake/yellow.gif",
 			imageUrl: "/img/minisnake/animated.gif",
 			tiles: ["XXX"]
 		},
@@ -197,7 +197,7 @@ module.exports = [
 		description: "A simple spider web simulation thrown together during a family vacation.",
 		instructions: "WASD: move, Shift: lay web",
 		grid: {
-			previewImageUrl: "/img/spider-game/sepia.gif",
+			previewImageUrl: "/img/spider-game/yellow.gif",
 			imageUrl: "/img/spider-game/animated.gif",
 			tiles: ["XX","XX"]
 		},
@@ -218,7 +218,7 @@ module.exports = [
 		description: "First foray into WebGL, the cylindrical player model is able to shoot arrows at varying speeds and distances.",
 		instructions: "WASD: move, Click and drag player: fire arrow",
 		grid: {
-			previewImageUrl: "/img/archery-game/sepia.gif",
+			previewImageUrl: "/img/archery-game/yellow.gif",
 			imageUrl: "/img/archery-game/animated.gif",
 			tiles: ["XX","XX","XX","XX","XX","XX","XX"]
 		},
@@ -239,7 +239,7 @@ module.exports = [
 		description: "Code4Health 2013 hackathon submission. Our team of two created a site for giving comfort to those in need. The final version would have pulled requests for comfort from Twitter and posted the responses anonymously.",
 		instructions: "Click quote to continue",
 		grid: {
-			previewImageUrl: "/img/tranquilime/sepia.gif",
+			previewImageUrl: "/img/tranquilime/yellow.gif",
 			imageUrl: "/img/tranquilime/animated.gif",
 			tiles: ["XXXX","XXXX"]
 		},
@@ -260,7 +260,7 @@ module.exports = [
 		description: "A virtual message board.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/sticky-wiki/sepia.gif",
+			previewImageUrl: "/img/sticky-wiki/yellow.gif",
 			imageUrl: "/img/sticky-wiki/animated.gif",
 			tiles: ["XX","XX","XX","XX"]
 		},
@@ -281,7 +281,7 @@ module.exports = [
 		description: "Non-interactive concepts for a block puzzler. The goal was to make a game where as soon as you cleared any tiles, new tiles would be added in such a way that the combo would continue forever.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/alchemy-drop/sepia.gif",
+			previewImageUrl: "/img/alchemy-drop/yellow.gif",
 			imageUrl: "/img/alchemy-drop/animated.gif",
 			tiles: ["X","X","X"]
 		},
@@ -302,7 +302,7 @@ module.exports = [
 		description: "College submission for a flocking simulation. The zombies (green dots) are programmed to seek out humans (blue dots) while the humans are programmed to stick together and avoid zombies.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/zombie-aflockalypse/sepia.gif",
+			previewImageUrl: "/img/zombie-aflockalypse/yellow.gif",
 			imageUrl: "/img/zombie-aflockalypse/animated.gif",
 			tiles: ["XXX","XXX","XXX"]
 		},
@@ -323,7 +323,7 @@ module.exports = [
 		description: "A little hex world with customizable terrain.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/hex-game/sepia.gif",
+			previewImageUrl: "/img/hex-game/yellow.gif",
 			imageUrl: "/img/hex-game/animated.gif",
 			tiles: ["XX"]
 		},
@@ -344,7 +344,7 @@ module.exports = [
 		description: "Random doodle of a blob.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/blob-animation/sepia.gif",
+			previewImageUrl: "/img/blob-animation/yellow.gif",
 			imageUrl: "/img/blob-animation/animated.gif",
 			tiles: ["X"]
 		},
@@ -365,17 +365,17 @@ module.exports = [
 		description: "The beginnings of my first ever physics engine.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/phys-engine/sepia.gif",
+			previewImageUrl: "/img/phys-engine/yellow.gif",
 			imageUrl: "/img/phys-engine/animated.gif",
 			tiles: ["X","X"]
 		},
 		content: {
 			type: "iframe",
 			url: "/repos/phys-engine/phys-engine.swf",
-			width: 490,
-			height: 300,
-			x: 5,
-			y: 50
+			width: 480,
+			height: 350,
+			x: 0,
+			y: 0
 		}
 	}, {
 		id: "efflorescence",
@@ -386,7 +386,7 @@ module.exports = [
 		description: "An extremely esoteric math game.",
 		instructions: "Click stems of fruit to... do a whole bunch of stuff",
 		grid: {
-			previewImageUrl: "/img/efflorescence/sepia.gif",
+			previewImageUrl: "/img/efflorescence/yellow.gif",
 			imageUrl: "/img/efflorescence/animated.gif",
 			tiles: ["XX","XX"]
 		},
@@ -407,7 +407,7 @@ module.exports = [
 		description: "An experimental take on Minesweeper for <a href=\"http://playwithyourmind.com/\" target=\"_blank\">Play With Your Mind</a>.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/mindsweeper/sepia.gif",
+			previewImageUrl: "/img/mindsweeper/yellow.gif",
 			imageUrl: "/img/mindsweeper/animated.gif",
 			tiles: ["XX","XX"]
 		},
@@ -428,7 +428,7 @@ module.exports = [
 		description: "Animation test for a virtual pet game.",
 		instructions: null,
 		grid: {
-			previewImageUrl: "/img/virtual-pet/sepia.gif",
+			previewImageUrl: "/img/virtual-pet/yellow.gif",
 			imageUrl: "/img/virtual-pet/animated.gif",
 			tiles: ["XX","XX","XX","XX"]
 		},
