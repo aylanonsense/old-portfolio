@@ -27,7 +27,6 @@ module.exports = function buildIndexHTML() {
 			instructions: project.instructions,
 			grid: {
 				imageUrl: project.grid.imageUrl,
-				previewImageUrl: project.grid.previewImageUrl,
 				tiles: project.grid.tiles,
 				rows: rows,
 				cols: cols,

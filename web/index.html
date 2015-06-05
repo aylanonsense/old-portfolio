@@ -24,7 +24,7 @@
 		<section id="shapes">
 			<% projects.forEach(function(project) { %>
 				<article id="shape-<%- project.id %>" class="shape" style="width:<%- project.grid.width %>px;height:<%- project.grid.height %>px;">
-					<div class="still-image" style="width:<%- project.grid.width - tileSize.margin %>px;height:<%- project.grid.height - tileSize.margin %>px;background-size: <%- project.grid.width - tileSize.margin %>px <%- project.grid.height - tileSize.margin %>px;"></div>
+					<div class="still-image" style="width:<%- project.grid.width - tileSize.margin %>px;height:<%- project.grid.height - tileSize.margin %>px;background-position:-<%- project.grid.previewImage.x || 0 %>px -<%- project.grid.previewImage.y || 0 %>px;background-image:url('<%- project.grid.previewImage.url %>');"></div>
 					<div class="tiles">
 						<% project.grid.tiles.forEach(function(tile) { %>
 							<div class="tile" style="top:<%- tile.y %>px;left:<%- tile.x %>px;width:<%- tile.width %>px;height:<%- tile.height %>px;"></div>

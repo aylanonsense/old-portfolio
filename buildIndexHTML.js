@@ -25,6 +25,7 @@ module.exports = function buildIndexHTML() {
 		return {
 			id: project.id,
 			grid: {
+				previewImage: project.grid.previewImage,
 				tiles: tiles,
 				width: cols * (tileSize.width + tileSize.margin),
 				height: rows * (tileSize.height + tileSize.margin)

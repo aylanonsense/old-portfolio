@@ -44,9 +44,6 @@ $(document).ready(function() {
 	//bind events when a shape is moused over or clicked
 	projects.forEach(function(project) {
 		project.$shape = $('#shape-' + project.id);
-		//the still/yellow image is loaded after the html
-		project.$shape.find('.still-image').css('background-image',
-			"url('" + project.grid.previewImageUrl + "')");
 		//the animated/fully color image is lazy-loaded when you hover over it
 		var $img = null;
 		function lazyLoad$Img() {
