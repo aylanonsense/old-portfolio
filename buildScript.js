@@ -2,7 +2,8 @@ var fs = require('fs');
 var underscore = require('underscore');
 var projectData = require('./project-data');
 var tileSize = require('./tile-size');
-var rawCode = fs.readFileSync('./web/script.js').toString();
+var scriptRaw = fs.readFileSync('./web/script.js').toString();
+var jQueryRaw = fs.readFileSync('./node_modules/jquery/dist/jquery.min.js');
 
 module.exports = function buildIndexHTML() {
 	var processedProjectData = projectData.map(function(project, i) {
@@ -38,8 +39,9 @@ module.exports = function buildIndexHTML() {
 			index: i
 		};
 	});
-	return underscore.template(rawCode)({
+	var scriptReplaced = underscore.template(scriptRaw)({
 		projects: JSON.stringify(processedProjectData),
 		tileSize: JSON.stringify(tileSize)
 	});
+	return jQueryRaw + '\n' + scriptReplaced;
 };

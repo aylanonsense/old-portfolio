@@ -3,6 +3,7 @@ var underscore = require('underscore');
 var projectData = require('./project-data');
 var tileSize = require('./tile-size');
 var rawHTML = fs.readFileSync('./web/index.html').toString();
+var minify = require('html-minifier').minify;
 
 module.exports = function buildIndexHTML() {
 	var processedProjectData = projectData.map(function(project) {
@@ -30,8 +31,23 @@ module.exports = function buildIndexHTML() {
 			}
 		};
 	});
-	return underscore.template(rawHTML)({
+
+	return minify(underscore.template(rawHTML)({
 		projects: processedProjectData,
 		tileSize: tileSize
+	}), {
+		removeAttributeQuotes: true,
+		removeComments: true,
+		collapseWhitespace: true,
+		conservativeCollapse: false,
+		removeRedundantAttributes: true,
+		useShortDoctype: true,
+		removeEmptyAttributes: true,
+		removeScriptTypeAttributes: true,
+		removeStyleLinkTypeAttributes: true,
+		removeIgnored: true,
+		minifyJS: true,
+		minifyCSS: true,
+		minifyURLs: true
 	});
 };

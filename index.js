@@ -1,8 +1,12 @@
 var express = require('express');
 var expressLess = require('express-less');
+var minify = require('express-minify');
+var compression = require('compression');
 var app = express();
 
 //serve static web resources
+app.use(compression());
+app.use(minify());
 app.use(express.static(__dirname + '/web/static'));
 
 //serve css files

@@ -18,8 +18,11 @@
   "homepage": "https://github.com/bridgs/portfolio",
   "dependencies": {
     "browserify": "^10.2.0",
+    "compression": "^1.4.4",
     "express": "^4.12.4",
     "express-less": "0.0.7",
+    "express-minify": "^0.1.6",
+    "html-minifier": "^0.7.2",
     "jquery": "^2.1.4",
     "underscore": "^1.8.3"
   }
