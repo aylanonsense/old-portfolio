@@ -24,12 +24,10 @@ module.exports = function buildIndexHTML() {
 		return {
 			id: project.id,
 			grid: {
-				previewImageUrl: project.grid.previewImageUrl,
-				imageUrl: project.grid.imageUrl,
-				tiles: tiles
-			},
-			width: cols * (tileSize.width + tileSize.margin),
-			height: rows * (tileSize.height + tileSize.margin)
+				tiles: tiles,
+				width: cols * (tileSize.width + tileSize.margin),
+				height: rows * (tileSize.height + tileSize.margin)
+			}
 		};
 	});
 	return underscore.template(rawHTML)({

@@ -7,14 +7,15 @@ $(document).ready(function() {
 	var projectsByShapeSize = projects.slice(0).sort(function(a, b) {
 		return b.grid.area - a.grid.area;
 	});
-	var MAX_SHAPE_WIDTH = Math.max.apply(Math, projects.map(function(project) {
-		return project.grid.width;
+	var MAX_SHAPE_COLS = Math.max.apply(Math, projects.map(function(project) {
+		return project.grid.cols;
 	}));
 
 	//cache performance object
 	var perf = performance;
 
 	//constants
+	var TILE_STILL_IMAGE_SEQUENTIAL_LOAD_TIME = 4;
 	var TILE_IMAGE_FADE_IN_TIME = 400;
 	var TILE_IMAGE_FADE_OUT_TIME = 400;
 	var TILE_REPOSITION_DELAY = 250;
@@ -38,23 +39,39 @@ $(document).ready(function() {
 	var dialogs = [ new Dialog($('#dialog-0')), new Dialog($('#dialog-1')) ];
 
 	//body cannot be smaller than width of content
-	$body.css('min-width', MAX_SHAPE_WIDTH * (tileSize.height + tileSize.margin));
+	$body.css('min-width', MAX_SHAPE_COLS * (tileSize.height + tileSize.margin));
 
 	//bind events when a shape is moused over or clicked
 	projects.forEach(function(project) {
 		project.$shape = $('#shape-' + project.id);
-		var $img = project.$shape.find('img');
+		//the still/yellow image is loaded after the html
+		project.$shape.find('.still-image').css('background-image',
+			"url('" + project.grid.previewImageUrl + "')");
+		//the animated/fully color image is lazy-loaded when you hover over it
+		var $img = null;
+		function lazyLoad$Img() {
+			if(!$img) {
+				$img = $('<img ' +
+					'src="' + project.grid.imageUrl +'" ' +
+					'width="' + (project.grid.width - tileSize.margin) + 'px" ' +
+					'height="' + (project.grid.height - tileSize.margin) + 'px"></img>')
+					.prependTo(project.$shape);
+			}
+		}
 		project.$shape
 			//on hover, fade in the saturated/animated image
 			.on('mouseenter', function() {
+				lazyLoad$Img();
 				$img.stop().fadeTo(Math.floor(TILE_IMAGE_FADE_IN_TIME * (1.0 - +$img.css('opacity'))), 1.0);
 			})
 			//when the mouse leaves the shape, fade out the saturated/animated image
 			.on('mouseleave', function() {
+				lazyLoad$Img();
 				$img.stop().fadeTo(Math.floor(TILE_IMAGE_FADE_OUT_TIME * (+$img.css('opacity'))), 0.0);
 			})
 			//when a shape is clicked, open the project dialog
 			.on('click', function() {
+				lazyLoad$Img();
 				openDialog(project);
 				$img.stop().fadeTo(Math.floor(TILE_IMAGE_FADE_OUT_TIME * (+$img.css('opacity'))), 0.0);
 			});
@@ -66,7 +83,7 @@ $(document).ready(function() {
 		//figure out width of content area based on width of body
 		var contentWidth = $body.width();
 		//we only need to reposition the shapes if we change the number of columns displayed
-		var numColumns = Math.max(MAX_SHAPE_WIDTH, Math.floor((contentWidth - tileSize.margin) /
+		var numColumns = Math.max(MAX_SHAPE_COLS, Math.floor((contentWidth - tileSize.margin) /
 			(tileSize.width + tileSize.margin)));
 		if(numColumnsCurrentlyRendered === numColumns) {
 			return;
@@ -327,6 +344,7 @@ $(document).ready(function() {
 		this._$fullScreenIcon.on('click', function() {
 			if(self.state === 'open') {
 				self.state = 'expanding';
+				self._$fullScreenIcon.addClass('enlarged');
 				if(!self._loadedFullVersion) {
 					self._emptyContent();
 				}
@@ -337,6 +355,7 @@ $(document).ready(function() {
 			}
 			else if(self.state === 'expanded') {
 				self.state = 'shrinking';
+				self._$fullScreenIcon.removeClass('enlarged');
 				self._$actualContent.stop().animate({
 					width: self.project.content.width,
 					height: self.project.content.height
@@ -368,6 +387,8 @@ $(document).ready(function() {
 		//load the initial data
 		this._renderData();
 		this._prerenderContent();
+
+		this._$fullScreenIcon.removeClass('enlarged');
 
 		//show/hide details
 		this.detailsPaneShown = showDetails;
@@ -557,4 +578,9 @@ $(document).ready(function() {
 
 	//when the page loads we reposition shapes into a grid immediately
 	repositionShapes(true);
+
+	//when you hover over the Contact me link, only then does it give my e-mail
+	$('#main-footer .contact-link').on('mouseover', function() {
+		$(this).attr('href', 'mai'+'lto'+':br'+'idg'+'s.d'+'ev@'+'gma'+'il.'+'com');
+	});
 });

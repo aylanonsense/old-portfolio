@@ -6,6 +6,8 @@ var rawCode = fs.readFileSync('./web/script.js').toString();
 
 module.exports = function buildIndexHTML() {
 	var processedProjectData = projectData.map(function(project, i) {
+		var rows = project.grid.tiles.length;
+		var cols = Math.max.apply(Math, project.grid.tiles.map(function(row) { return row.length; }));
 		var shapeArea = 0;
 		for(var r = 0; r < project.grid.tiles.length; r++) {
 			for(var c = 0; c < project.grid.tiles[r].length; c++) {
@@ -14,8 +16,6 @@ module.exports = function buildIndexHTML() {
 				}
 			}
 		}
-		var shapeWidth = Math.max.apply(Math, project.grid.tiles.map(function(row) { return row.length; }));
-		var shapeHeight = project.grid.tiles.length;
 		return {
 			id: project.id,
 			title: project.title,
@@ -25,9 +25,13 @@ module.exports = function buildIndexHTML() {
 			description: project.description,
 			instructions: project.instructions,
 			grid: {
+				imageUrl: project.grid.imageUrl,
+				previewImageUrl: project.grid.previewImageUrl,
 				tiles: project.grid.tiles,
-				width: shapeWidth,
-				height: shapeHeight,
+				rows: rows,
+				cols: cols,
+				width: cols * (tileSize.width + tileSize.margin),
+				height: rows * (tileSize.height + tileSize.margin),
 				area: shapeArea
 			},
 			content: project.content,

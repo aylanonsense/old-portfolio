@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>bridgs' scrapbook</title>
+		<title>bridgs</title>
 		<script type="text/javascript" src="/jquery.min.js"></script>
 		<!--<script type="text/javascript" src='/jquery.transit.min.js'></script>-->
 		<script type="text/javascript" src="/script.js"></script>
@@ -25,8 +25,8 @@
 
 		<section id="shapes">
 			<% projects.forEach(function(project) { %>
-				<article id="shape-<%- project.id %>" class="shape" style="width:<%- project.width %>px;height:<%- project.height %>px;background-image:url('<%- project.grid.previewImageUrl %>');background-size: <%- project.width - tileSize.margin %>px <%- project.height - tileSize.margin %>px;">
-					<img src="<%= project.grid.imageUrl %>" width="<%- project.width - tileSize.margin %>px" height="<%- project.height - tileSize.margin %>px"></img>
+				<article id="shape-<%- project.id %>" class="shape" style="width:<%- project.grid.width %>px;height:<%- project.grid.height %>px;">
+					<div class="still-image" style="width:<%- project.grid.width - tileSize.margin %>px;height:<%- project.grid.height - tileSize.margin %>px;background-size: <%- project.grid.width - tileSize.margin %>px <%- project.grid.height - tileSize.margin %>px;"></div>
 					<div class="tiles">
 						<% project.grid.tiles.forEach(function(tile) { %>
 							<div class="tile" style="top:<%- tile.y %>px;left:<%- tile.x %>px;width:<%- tile.width %>px;height:<%- tile.height %>px;"></div>
@@ -37,8 +37,13 @@
 		</section>
 
 		<footer id="main-footer">
-			<a class="icon-link github" href="https://github.com/bridgs" target="_blank"></a>
-			<a class="icon-link twitter" href="https://twitter.com/bridgs_dev" target="_blank"></a>
+			<div class="references">
+				<a class="contact-link" href="javascript:;">Contact me</a>
+			</div>
+			<div class="social-media">
+				<a class="icon-link github" href="https://github.com/bridgs" target="_blank"></a>
+				<a class="icon-link twitter" href="https://twitter.com/bridgs_dev" target="_blank"></a>
+			</div>
 		</footer>
 
 		<div id="dialog-stuff">

@@ -284,7 +284,7 @@ module.exports = [
 		timePeriod: "April 2014",
 		medium: "Photoshop",
 		repoUrl: null,
-		description: "Posters made as a gift to a couple of fans of the Dark Souls video game series. (Disclaimer: I am not a bro.)",
+		description: "Posters made as a gift to a couple of fans of the Dark Souls video game series. (Note: I am not a bro.)",
 		instructions: null,
 		grid: {
 			previewImageUrl: "/img/poster-praise-it/yellow.gif",
@@ -308,7 +308,7 @@ module.exports = [
 		timePeriod: "April 2014",
 		medium: "Photoshop",
 		repoUrl: null,
-		description: "Posters made as a gift to a couple of fans of the Dark Souls video game series. (Disclaimer: I am not a bro.)",
+		description: "Posters made as a gift to a couple of fans of the Dark Souls video game series. (Note: I am not a bro.)",
 		instructions: null,
 		grid: {
 			previewImageUrl: "/img/poster-havel/yellow.gif",
