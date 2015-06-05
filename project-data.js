@@ -189,6 +189,30 @@ module.exports = [
 			y: 9
 		}
 	}, {
+		id: "painting-mint-sun",
+		title: "Untitled",
+		timePeriod: "2014",
+		medium: "Acrylic on canvas",
+		repoUrl: null,
+		description: null,
+		instructions: null,
+		grid: {
+			previewImageUrl: "/img/painting-mint-sun/yellow.jpg",
+			imageUrl: "/img/painting-mint-sun/icon.jpg",
+			tiles: ["XX"]
+		},
+		content: {
+			type: "image",
+			url: "/img/painting-mint-sun/small.jpg",
+			width: 458,
+			height: 363,
+			full: {
+				url: "/img/painting-mint-sun/full.jpg",
+				width: 915,
+				height: 725
+			}
+		}
+	}, {
 		id: "spider-game",
 		title: "Spider game",
 		timePeriod: "September 2014",
@@ -208,6 +232,30 @@ module.exports = [
 			height: 450,
 			x: 0,
 			y: 0
+		}
+	}, {
+		id: "painting-propeller-knight",
+		title: "Propeller Knight",
+		timePeriod: "August 2014",
+		medium: "Acrylic on canvas",
+		repoUrl: null,
+		description: "Painting of the Propeller Knight boss from Shovel Knight. Given as a birthday gift.",
+		instructions: null,
+		grid: {
+			previewImageUrl: "/img/painting-propeller-knight/yellow.jpg",
+			imageUrl: "/img/painting-propeller-knight/icon.jpg",
+			tiles: ["X","X"]
+		},
+		content: {
+			type: "image",
+			url: "/img/painting-propeller-knight/small.jpg",
+			width: 161,
+			height: 495,
+			full: {
+				url: "/img/painting-propeller-knight/full.jpg",
+				width: 322,
+				height: 989
+			}
 		}
 	},  {
 		id: "archery-game",
@@ -229,6 +277,54 @@ module.exports = [
 			height: 500,
 			x: 0,
 			y: 0
+		}
+	}, {
+		id: "poster-praise-it",
+		title: "Dark Souls Poster 1 of 2",
+		timePeriod: "April 2014",
+		medium: "Photoshop",
+		repoUrl: null,
+		description: "Posters made as a gift to a couple of fans of the Dark Souls video game series. (Disclaimer: I am not a bro.)",
+		instructions: null,
+		grid: {
+			previewImageUrl: "/img/poster-praise-it/yellow.gif",
+			imageUrl: "/img/poster-praise-it/icon.gif",
+			tiles: ["XX"]
+		},
+		content: {
+			type: "image",
+			url: "/img/poster-praise-it/small.jpg",
+			width: 759,
+			height: 609,
+			full: {
+				url: "/img/poster-praise-it/full.jpg",
+				width: 6075,
+				height: 4875
+			}
+		}
+	}, {
+		id: "poster-havel",
+		title: "Dark Souls Poster 2 of 2",
+		timePeriod: "April 2014",
+		medium: "Photoshop",
+		repoUrl: null,
+		description: "Posters made as a gift to a couple of fans of the Dark Souls video game series. (Disclaimer: I am not a bro.)",
+		instructions: null,
+		grid: {
+			previewImageUrl: "/img/poster-havel/yellow.gif",
+			imageUrl: "/img/poster-havel/icon.gif",
+			tiles: ["X"]
+		},
+		content: {
+			type: "image",
+			url: "/img/poster-havel/small.jpg",
+			width: 759,
+			height: 609,
+			full: {
+				url: "/img/poster-havel/full.jpg",
+				width: 6075,
+				height: 4875
+			}
 		}
 	}, {
 		id: "tranquilime",
@@ -271,6 +367,30 @@ module.exports = [
 			height: 500,
 			x: 0,
 			y: 0
+		}
+	}, {
+		id: "painting-gazelle",
+		title: "Untitled",
+		timePeriod: "2013",
+		medium: "Acrylic on canvas",
+		repoUrl: null,
+		description: "My first ever painting.",
+		instructions: null,
+		grid: {
+			previewImageUrl: "/img/painting-gazelle/yellow.jpg",
+			imageUrl: "/img/painting-gazelle/icon.jpg",
+			tiles: ["XX","XX"]
+		},
+		content: {
+			type: "image",
+			width: 186,
+			height: 560,
+			url: "/img/painting-gazelle/small.jpg",
+			full: {
+				url: "/img/painting-gazelle/full.jpg",
+				width: 365,
+				height: 1119,
+			}
 		}
 	}, {
 		id: "alchemy-drop",
@@ -332,6 +452,27 @@ module.exports = [
 			url: "/repos/hex-game/hex-game.swf",
 			width: 500,
 			height: 400,
+			x: 0,
+			y: 0
+		}
+	}, {
+		id: "nebulaic",
+		title: "Nebulaic",
+		timePeriod: "2008",
+		medium: "Flash",
+		repoUrl: null,
+		description: "College project. Simple Flash game with gravitating particles.",
+		instructions: "Red dots will follow mouse",
+		grid: {
+			previewImageUrl: "/img/nebulaic/yellow.gif",
+			imageUrl: "/img/nebulaic/animated.gif",
+			tiles: ["XX","XX","XX"]
+		},
+		content: {
+			type: "iframe",
+			url: "/repos/nebulaic/Game.html",
+			width: 600,
+			height: 600,
 			x: 0,
 			y: 0
 		}

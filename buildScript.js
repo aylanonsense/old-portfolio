@@ -5,7 +5,7 @@ var tileSize = require('./tile-size');
 var rawCode = fs.readFileSync('./web/script.js').toString();
 
 module.exports = function buildIndexHTML() {
-	var processedProjectData = projectData.map(function(project) {
+	var processedProjectData = projectData.map(function(project, i) {
 		var shapeArea = 0;
 		for(var r = 0; r < project.grid.tiles.length; r++) {
 			for(var c = 0; c < project.grid.tiles[r].length; c++) {
@@ -30,14 +30,8 @@ module.exports = function buildIndexHTML() {
 				height: shapeHeight,
 				area: shapeArea
 			},
-			content: {
-				type: project.content.type,
-				url: project.content.url,
-				width: project.content.width,
-				height: project.content.height,
-				x: project.content.x,
-				y: project.content.y
-			}
+			content: project.content,
+			index: i
 		};
 	});
 	return underscore.template(rawCode)({

@@ -5,18 +5,103 @@
 #main-header {
 	background-color: #ee156d;
 	width: 100%;
-	height: 60px;
-	background-image: url('/img/pink-diag.gif');
+	background-image: url('/img/header-border.gif');
 	background-repeat: repeat-x;
 	background-position: bottom -1px left;
+	padding-bottom: 18px;
+	font-family: 'Raleway', sans-serif;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+	h1 {
+		width: 210px;
+		margin: 10px 0 10px 0;
+		text-align: center;
+		color: white;
+		flex-grow: 0.4;
+		.pre-heading {
+			font-weight: 400;
+			font-size: 8pt;
+			display: block;
+		}
+		.heading {
+			line-height: 1em;
+			font-weight: 800;
+			font-size: 40pt;
+			display: block;
+			letter-spacing: -1px;
+		}
+	}
+	.side-content {
+		width: 210px;
+		flex-grow: 0.3;
+	}
+}
+#disclaimer {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 9pt;
+	line-height: 1.1em;
+	color: #eda4c1;
+	width: 185px;
+	padding: 8px;
+	text-align: justify;
+	margin: -2px 15px 0 auto;
+	h2 {
+		font-size: 11pt;
+		font-weight: 700;
+		letter-spacing: 4px;
+		text-transform: uppercase;
+		text-align: center;	
+		margin: 0 0 4px 0;
+		padding: 0;
+	}
+	p {
+		margin: 0;
+	}
+	&:hover {
+		color: #fff;
+	}
 }
 #main-footer {
-	background-color: #2d45d9;
+	background-color: #64480b;
 	width: 100%;
-	height: 60px;
-	background-image: url('/img/blue-diag.gif');
+	height: 50px;
+	background-image: url('/img/footer-border.gif');
 	background-repeat: repeat-x;
 	background-position: top -1px left;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	.icon-link {
+		display: block;
+		width: 32px;
+		height: 32px;
+		margin: 5px;
+		background-image: url('/img/social-media-icons.png');
+		background-repeat: no-repeat;
+		&.twitter {
+			background-position: 0 0;
+			&:hover {
+				background-position: 0 -64px;
+			}
+			&:active {
+				background-position: 0 -32px;
+			}
+		}
+		&.github {
+			background-position: -32px 0;
+			&:hover {
+				background-position: -32px -64px;
+			}
+			&:active {
+				background-position: -32px -32px;
+			}
+		}
+	}
 }
 body {
 	display: flex;
@@ -39,7 +124,7 @@ body {
 			position: absolute;
 			top: 0;
 			left: 0;
-			width: 100%;
+			width: 100%;	
 			height: 100%;
 			.tile {
 				z-index: 2;
@@ -66,6 +151,7 @@ body {
 		bottom: 0;
 		left: 0;
 		right: 0;
+		box-shadow: inset 0 0 150px #dda40f;
 	}
 	.left-arrow, .right-arrow {
 		z-index: 5;
@@ -108,10 +194,10 @@ body {
 	.dialog {
 		z-index: 4;
 		position: fixed;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
+		top: 10px;
+		bottom: 10px;
+		left: 10px;
+		right: 10px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -123,15 +209,28 @@ body {
 			justify-content: center;
 			flex-flow: column wrap;
 			width: 100%;
-			height: 90%;
+			height: 100%;
 			.content {
 				position: relative;
 				background-color: #535353;
 				background-image: url('/img/dialog-content-bg.gif');
 				background-repeat: no-repeat;
 				background-position: center;
-				border: 3px solid #454545;
 				box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+				.full-screen-icon {
+					background-color: red;
+					width: 50px;
+					height: 50px;
+					position: absolute;
+					top: 0;
+					right: 0;
+					display: none;
+					opacity: 0.5;
+					&:hover {
+						opacity: 1.0;
+						cursor: pointer;
+					}
+				}
 				.actual-content {
 					box-shadow: inset 0px 0px 120px 40px #444;
 				}
@@ -140,7 +239,7 @@ body {
 					display: none;
 					color: yellow;
 					position: absolute;
-					bottom: -37px;
+					bottom: -32px;
 					right: 0;
 					font-size: 10pt;
 					font-weight: 100;
@@ -154,6 +253,9 @@ body {
 				}
 			}
 			.details {
+				background-image: url('/img/details_bg.png');
+				background-repeat: repeat;
+				background-position: top left;
 				position: relative;
 				background-color: #fcfbfa;
 				width: 300px;
@@ -175,11 +277,37 @@ body {
 					margin: 0 0 7px 0;
 					font-size: 12pt;
 					font-weight: 300;
+					.repo-link {
+						width: 16px;
+						height: 16px;
+						display: inline-block;
+						background-image: url('/img/social-media-icons.png');
+						background-repeat: no-repeat;
+						background-size: 32px 80px;
+						background-position: -16px -64px;
+						position: relative;
+						top: 3px;
+						margin-left: 2px;
+						&:hover {
+							background-position: -16px -48px;
+						}
+						&:active {
+							background-position: -16px -16px;
+						}
+					}
 				}
 				.description {
 					margin: 0 0 5px 0;
 					font-size: 10pt;
 					font-weight: 100;
+					a {
+						color: #ee156d;
+						text-decoration: none;
+						font-weight: 300;
+						&:hover {
+							color: #eda4c1;
+						}
+					}
 				}
 				.instructions {
 					margin: 0 0 5px 0;
@@ -198,7 +326,7 @@ body {
 						color: #ddd;
 						text-decoration: none;
 						&:hover {
-							color: #aaa;
+							color: #666;
 						}
 					}
 				}

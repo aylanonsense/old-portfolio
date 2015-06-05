@@ -1,13 +1,27 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>bridgs' portfolio</title>
+		<title>bridgs' scrapbook</title>
 		<script type="text/javascript" src="/jquery.min.js"></script>
+		<!--<script type="text/javascript" src='/jquery.transit.min.js'></script>-->
 		<script type="text/javascript" src="/script.js"></script>
-		<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,100italic,400' rel='stylesheet' type='text/css'>
+		<link href="http://fonts.googleapis.com/css?family=Roboto:100,300,100italic,400,700|Raleway:800,400" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="/css/styles.css"></link>
 	</head>
 	<body>
-		<header id="main-header"></header>
+		<header id="main-header">
+			<div class="side-content"></div>
+			<h1>
+				<span class="pre-heading">the virtual scrapbook of</span>
+				<span class="heading">bridgs</span>
+			</h1>
+			<div class="side-content">
+				<div id="disclaimer">
+					<h2>Disclaimer</h2>
+					<p>Very little of what you see here is polished or even complete. I'm okay with that. I hope you are too.</p>
+				</div>
+			</div>
+		</header>
 
 		<section id="shapes">
 			<% projects.forEach(function(project) { %>
@@ -22,7 +36,10 @@
 			<% }); %>
 		</section>
 
-		<footer id="main-footer"></footer>
+		<footer id="main-footer">
+			<a class="icon-link github" href="https://github.com/bridgs" target="_blank"></a>
+			<a class="icon-link twitter" href="https://twitter.com/bridgs_dev" target="_blank"></a>
+		</footer>
 
 		<div id="dialog-stuff">
 			<div class="screen"></div>
@@ -37,30 +54,32 @@
 			<div id="dialog-0" class="dialog">
 				<div class="body">
 					<div class="content">
+						<div class="full-screen-icon"></div>
 						<div class="actual-content"></div>
-						<p class="show-details"><a href="#">+ Show details</a></p>
+						<p class="show-details"><a href="javascript:;">+ Show details</a></p>
 					</div>
 					<div class="details">
 						<h2><span class="title"></span> <span class="time-period"></span></h2>
-						<h3><span class="medium"></span> <a class="repo-link" href="#"></a></h3>
+						<h3><span class="medium"></span> <a class="repo-link" title="view on GitHub" href="#" target="_blank"></a></h3>
 						<p class="description"></p>
 						<p class="instructions"></p>
-						<p class="hide-details"><a href="#">hide</a></p>
+						<p class="hide-details"><a href="javascript:;">hide</a></p>
 					</div>
 				</div>
 			</div>
 			<div id="dialog-1" class="dialog">
 				<div class="body">
 					<div class="content">
+						<div class="full-screen-icon"></div>
 						<div class="actual-content"></div>
-						<p class="show-details"><a href="#">+ Show details</a></p>
+						<p class="show-details"><a href="javascript:;">+ Show details</a></p>
 					</div>
 					<div class="details">
 						<h2><span class="title"></span> <span class="time-period"></span></h2>
-						<h3><span class="medium"></span> <a class="repo-link" href="#"></a></h3>
+						<h3><span class="medium"></span> <a class="repo-link" title="view on GitHub" href="#" target="_blank"></a></h3>
 						<p class="description"></p>
 						<p class="instructions"></p>
-						<p class="hide-details"><a href="#">hide</a></p>
+						<p class="hide-details"><a href="javascript:;">hide</a></p>
 					</div>
 				</div>
 			</div>
