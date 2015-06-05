@@ -2,8 +2,18 @@
 <html>
 	<head>
 		<title>bridgs</title>
-		<script type="text/javascript" src="/script.js"></script>
-		<link href="http://fonts.googleapis.com/css?family=Roboto:100,300,100italic,400,700|Raleway:800,400" rel="stylesheet" type="text/css">
+		<script type="text/javascript">
+		function downloadJSAtOnload() {
+			var element = document.createElement("script");
+			element.src = "script.js";
+			document.body.appendChild(element);
+		}
+		if(window.addEventListener)
+		window.addEventListener("load", downloadJSAtOnload, false);
+		else if(window.attachEvent)
+		window.attachEvent("onload", downloadJSAtOnload);
+		else window.onload = downloadJSAtOnload;
+		</script>
 		<link rel="stylesheet" href="/css/styles.css"></link>
 	</head>
 	<body>
