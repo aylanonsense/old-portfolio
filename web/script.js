@@ -449,7 +449,7 @@ $(document).ready(function() {
 		this._$actualContent.css({ width: size.width, height: size.height });
 	};
 	Dialog.prototype._renderData = function() {
-		this._$title.toggle(!!this.project.title).text(this.project.title);
+		this._$title.toggle(!!this.project.title).html(this.project.title);
 		this._$timePeriod.toggle(!!this.project.timePeriod).text("(" + this.project.timePeriod + ")");
 		this._$h2.toggle(!!this.project.title || !!this.project.timePeriod);
 		this._$medium.toggle(!!this.project.medium).text(this.project.medium);

@@ -1,5 +1,31 @@
 module.exports = [
 	{
+		id: "pixel-art-ghus",
+		title: "Gh&uuml;s",
+		timePeriod: "June 2015",
+		medium: "Photoshop",
+		repoUrl: null,
+		description: "Animation of Gh&uuml;s from the Saga comic book series.",
+		instructions: null,
+		grid: {
+			previewImage: {
+				url: "/img/pixel-art-ghus/yellow.png"
+			},
+			imageUrl: "/img/pixel-art-ghus/animated.gif",
+			tiles: ["X"]
+		},
+		content: {
+			type: "image",
+			url: "/img/pixel-art-ghus/small.gif",
+			width: 240,
+			height: 240,
+			full: {
+				url: "/img/pixel-art-ghus/full.gif",
+				width: 600,
+				height: 600
+			}
+		}
+	}, {
 		id: "pixel-art-tree",
 		title: "Untitled",
 		timePeriod: "June 2015",
