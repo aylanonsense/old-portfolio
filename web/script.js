@@ -238,6 +238,7 @@ $(document).ready(function() {
 
 					//we are now fully closed
 					activeDialog.close();
+					history.replaceState(undefined, undefined, "#");
 					activeDialogIndex = null;
 				});
 			}
@@ -401,6 +402,7 @@ $(document).ready(function() {
 	Dialog.prototype.open = function() {
 		this.state = 'open';
 		this._renderContent();
+		history.replaceState(undefined, undefined, "#" + this.project.id);
 	};
 	Dialog.prototype.startClosing = function(startPosition, endPosition) {
 		this.state = 'closing';
@@ -580,4 +582,14 @@ $(document).ready(function() {
 	$('#main-footer .contact-link').on('mouseover', function() {
 		$(this).attr('href', 'mai'+'lto'+':br'+'idg'+'s.d'+'ev@'+'gma'+'il.'+'com');
 	});
+
+	var hash = window.location.hash;
+	if(hash && hash.indexOf("#") === 0) {
+		for(var i = 0; i < projects.length; i++) {
+			if(hash === "#" + projects[i].id) {
+				openDialog(projects[i]);
+				break;
+			}
+		}
+	}
 });
