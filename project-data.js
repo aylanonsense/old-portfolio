@@ -1,5 +1,31 @@
 module.exports = [
 	{
+		id: "pixel-art-tree",
+		title: "Untitled",
+		timePeriod: "June 2015",
+		medium: "Photoshop",
+		repoUrl: null,
+		description: "A quick tree painted pixel by pixel.",
+		instructions: null,
+		grid: {
+			previewImage: {
+				url: "/img/pixel-art-tree/yellow.png"
+			},
+			imageUrl: "/img/pixel-art-tree/animated.gif",
+			tiles: ["XX","XX"]
+		},
+		content: {
+			type: "image",
+			url: "/img/pixel-art-tree/small.png",
+			width: 264,
+			height: 264,
+			full: {
+				url: "/img/pixel-art-tree/full.png",
+				width: 660,
+				height: 660
+			}
+		}
+	}, {
 		id: "beevoobaa",
 		title: "beevoobaa",
 		timePeriod: "April and May 2015",
