@@ -1,5 +1,31 @@
 module.exports = [
 	{
+		id: "painting-skull",
+		title: "Untitled",
+		timePeriod: "October 2015",
+		medium: "Acrylic on canvas",
+		repoUrl: null,
+		description: null,
+		instructions: null,
+		grid: {
+			previewImage: {
+				url: "/img/painting-skull/yellow.jpg"
+			},
+			imageUrl: "/img/painting-skull/icon.jpg",
+			tiles: ["X","X"]
+		},
+		content: {
+			type: "image",
+			url: "/img/painting-skull/small.jpg",
+			width: 272,
+			height: 408,
+			full: {
+				url: "/img/painting-skull/full.jpg",
+				width: 2173,
+				height: 3264
+			}
+		}
+	}, {
 		id: "pixel-art-ghus",
 		title: "Gh&uuml;s",
 		timePeriod: "June 2015",
