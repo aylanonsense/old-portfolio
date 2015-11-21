@@ -580,7 +580,7 @@ module.exports = [
 		},
 		content: {
 			type: "iframe",
-			url: "/repos/zombie-aflockalypse/zombie-aflockalypse.swf",
+			url: "/repos/zombie-aflockalypse/zombie-aflockalypse.html",
 			width: 600,
 			height: 450,
 			x: 0,
@@ -605,7 +605,7 @@ module.exports = [
 		},
 		content: {
 			type: "iframe",
-			url: "/repos/hex-game/hex-game.swf",
+			url: "/repos/hex-game/hex-game.html",
 			width: 500,
 			height: 400,
 			x: 0,
@@ -655,9 +655,9 @@ module.exports = [
 		},
 		content: {
 			type: "iframe",
-			url: "/repos/blob-animation/blob-animation.swf",
-			width: 350,
-			height: 350,
+			url: "/repos/blob-animation/blob-animation.html",
+			width: 550,
+			height: 400,
 			x: 0,
 			y: 0
 		}
@@ -680,9 +680,9 @@ module.exports = [
 		},
 		content: {
 			type: "iframe",
-			url: "/repos/phys-engine/phys-engine.swf",
-			width: 480,
-			height: 350,
+			url: "/repos/phys-engine/phys-engine.html",
+			width: 550,
+			height: 400,
 			x: 0,
 			y: 0
 		}
@@ -705,9 +705,9 @@ module.exports = [
 		},
 		content: {
 			type: "iframe",
-			url: "/repos/efflorescence/efflorescence.swf",
-			width: 700,
-			height: 350,
+			url: "/repos/efflorescence/efflorescence.html",
+			width: 800,
+			height: 400,
 			x: 0,
 			y: 0
 		}
@@ -730,9 +730,9 @@ module.exports = [
 		},
 		content: {
 			type: "iframe",
-			url: "/repos/mindsweeper/mindsweeper.swf",
-			width: 495,
-			height: 450,
+			url: "/repos/mindsweeper/mindsweeper.html",
+			width: 575,
+			height: 525,
 			x: 0,
 			y: 0
 		}
@@ -755,9 +755,9 @@ module.exports = [
 		},
 		content: {
 			type: "iframe",
-			url: "/repos/virtual-pet/virtual-pet.swf",
-			width: 600,
-			height: 450,
+			url: "/repos/virtual-pet/virtual-pet.html",
+			width: 550,
+			height: 400,
 			x: 0,
 			y: 0
 		}
