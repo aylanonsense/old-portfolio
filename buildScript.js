@@ -5,7 +5,7 @@ var tileSize = require('./tile-size');
 var scriptRaw = fs.readFileSync('./web/script.js').toString();
 var jQueryRaw = fs.readFileSync('./node_modules/jquery/dist/jquery.min.js');
 
-module.exports = function buildIndexHTML() {
+module.exports = function buildScript() {
 	var processedProjectData = projectData.map(function(project, i) {
 		var rows = project.grid.tiles.length;
 		var cols = Math.max.apply(Math, project.grid.tiles.map(function(row) { return row.length; }));

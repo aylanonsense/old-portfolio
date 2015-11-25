@@ -1,5 +1,32 @@
 module.exports = [
 	{
+		id: "pixel-art-grapplegirl",
+		title: "Grapple Girl",
+		timePeriod: "November 2015",
+		medium: "Photoshop",
+		repoUrl: null,
+		description: "Walk cycle test of video game sprite.",
+		instructions: null,
+		grid: {
+			previewImage: {
+				url: "/img/pixel-art-grapplegirl/yellow.png"
+			},
+			imageUrl: "/img/pixel-art-grapplegirl/animated.gif",
+			tiles: ["X"]
+		},
+		content: {
+			type: "image",
+			url: "/img/pixel-art-grapplegirl/20x20.gif",
+			width: 120,
+			height: 120,
+			isPixelArt: true,
+			full: {
+				url: "/img/pixel-art-grapplegirl/20x20.gif",
+				width: 600,
+				height: 600
+			}
+		}
+	}, {
 		id: "painting-skull",
 		title: "Untitled",
 		timePeriod: "October 2015",
@@ -45,6 +72,7 @@ module.exports = [
 			url: "/img/pixel-art-ghus/small.gif",
 			width: 240,
 			height: 240,
+			isPixelArt: true,
 			full: {
 				url: "/img/pixel-art-ghus/full.gif",
 				width: 600,
@@ -71,6 +99,7 @@ module.exports = [
 			url: "/img/pixel-art-tree/small.png",
 			width: 264,
 			height: 264,
+			isPixelArt: true,
 			full: {
 				url: "/img/pixel-art-tree/full.png",
 				width: 660,

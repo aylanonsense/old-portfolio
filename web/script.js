@@ -442,7 +442,7 @@ $(document).ready(function() {
 			self.state = 'expanded';
 			if(!self._loadedFullVersion) {
 				self._loadedFullVersion = true;
-				self._renderImageContent(self.project.content.full.url);
+				self._renderImageContent(self.project.content.full.url, self.project.content.isPixelArt);
 			}
 		});
 	};
@@ -474,7 +474,7 @@ $(document).ready(function() {
 			this._renderIframeContent(c.url, c.x, c.y, c.width, c.height);
 		}
 		else if(c.type === 'image') {
-			this._renderImageContent(c.url, c.width, c.height);
+			this._renderImageContent(c.url, c.isPixelArt, c.width, c.height);
 		}
 	};
 	Dialog.prototype._renderIframeContent = function(url, x, y, width, height) {
@@ -492,10 +492,12 @@ $(document).ready(function() {
 			'</div>')
 			.appendTo(this._$actualContent).find('iframe').focus();
 	};
-	Dialog.prototype._renderImageContent = function(url, width, height) {
+	Dialog.prototype._renderImageContent = function(url, isPixelArt, width, height) {
 		$('<img class="image-content" src="' + url + '" ' +
 			'width="' + (width ? width + 'px' : '100%') + '" ' +
-			'height="' + (height ? height + 'px' : '100%') + '" />')
+			'height="' + (height ? height + 'px' : '100%') + '" ' +
+			(isPixelArt ? 'style="image-rendering:pixelated;" ' : '') +
+			'/>')
 			.appendTo(this._$actualContent);
 	};
 	Dialog.prototype._slide = function(startPosition, endPosition) {
