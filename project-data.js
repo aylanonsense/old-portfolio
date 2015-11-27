@@ -9,7 +9,9 @@ module.exports = [
 		instructions: null,
 		grid: {
 			previewImage: {
-				url: "/img/pixel-art-grapplegirl/yellow.png"
+				url: "/sheets/sheet2.png",
+				x: 204,
+				y: 625
 			},
 			imageUrl: "/img/pixel-art-grapplegirl/animated.gif",
 			tiles: ["X"]
@@ -36,7 +38,9 @@ module.exports = [
 		instructions: null,
 		grid: {
 			previewImage: {
-				url: "/img/painting-skull/yellow.jpg"
+				url: "/sheets/sheet3.png",
+				x: 552,
+				y: 336
 			},
 			imageUrl: "/img/painting-skull/icon.jpg",
 			tiles: ["X","X"]
@@ -62,7 +66,9 @@ module.exports = [
 		instructions: null,
 		grid: {
 			previewImage: {
-				url: "/img/pixel-art-ghus/yellow.png"
+				url: "/sheets/sheet2.png",
+				x: 192,
+				y: 684
 			},
 			imageUrl: "/img/pixel-art-ghus/animated.gif",
 			tiles: ["X"]
@@ -85,11 +91,13 @@ module.exports = [
 		timePeriod: "June 2015",
 		medium: "Photoshop",
 		repoUrl: null,
-		description: "A quick tree painted pixel by pixel.",
+		description: "A tree painted pixel by pixel.",
 		instructions: null,
 		grid: {
 			previewImage: {
-				url: "/img/pixel-art-tree/yellow.png"
+				url: "/sheets/sheet3.png",
+				x: 132,
+				y: 480
 			},
 			imageUrl: "/img/pixel-art-tree/animated.gif",
 			tiles: ["XX","XX"]
@@ -282,6 +290,34 @@ module.exports = [
 			y: 0
 		}
 	}, {
+		id: "comic-grunt-birthday",
+		title: "Grunt Birthday",
+		timePeriod: "November 2014",
+		medium: "Pen on Paper",
+		repoUrl: null,
+		description: "My first thought when I heard about the 'Grunt Birthday' option in Halo.",
+		instructions: null,
+		grid: {
+			previewImage: {
+				url: "/sheets/sheet3.png",
+				x: 264,
+				y: 480
+			},
+			imageUrl: "/img/comic-grunt-birthday/icon.jpg",
+			tiles: ["X","X"]
+		},
+		content: {
+			type: "image",
+			url: "/img/comic-grunt-birthday/small.jpg",
+			width: 310,
+			height: 470,
+			full: {
+				url: "/img/comic-grunt-birthday/full.jpg",
+				width: 620,
+				height: 940,
+			}
+		}
+	}, {
 		id: "space-team-galaxy-explorer",
 		title: "Space Team: Galaxy Explorer",
 		timePeriod: "November 2014",
@@ -332,32 +368,6 @@ module.exports = [
 			y: 9
 		}
 	}, {
-		id: "painting-mint-sun",
-		title: "Untitled",
-		timePeriod: "2014",
-		medium: "Acrylic on canvas",
-		repoUrl: null,
-		description: null,
-		instructions: null,
-		grid: {
-			previewImage: {
-				url: "/img/painting-mint-sun/yellow.jpg"
-			},
-			imageUrl: "/img/painting-mint-sun/icon.jpg",
-			tiles: ["XX"]
-		},
-		content: {
-			type: "image",
-			url: "/img/painting-mint-sun/small.jpg",
-			width: 458,
-			height: 363,
-			full: {
-				url: "/img/painting-mint-sun/full.jpg",
-				width: 915,
-				height: 725
-			}
-		}
-	}, {
 		id: "spider-game",
 		title: "Spider game",
 		timePeriod: "September 2014",
@@ -392,7 +402,9 @@ module.exports = [
 		instructions: null,
 		grid: {
 			previewImage: {
-				url: "/img/painting-propeller-knight/yellow.jpg"
+				url: "/sheets/sheet3.png",
+				x: 324,
+				y: 480
 			},
 			imageUrl: "/img/painting-propeller-knight/icon.jpg",
 			tiles: ["X","X"]
@@ -490,6 +502,62 @@ module.exports = [
 			}
 		}
 	}, {
+		id: "drawing-peacock-feather",
+		title: "Peacock Feather",
+		timePeriod: "2014",
+		medium: "Felt pen on paper",
+		repoUrl: null,
+		description: null,
+		instructions: null,
+		grid: {
+			previewImage: {
+				url: "/sheets/sheet2.png",
+				x: 0,
+				y: 684
+			},
+			imageUrl: "/img/drawing-peacock-feather/icon.jpg",
+			tiles: ["XX"]
+		},
+		content: {
+			type: "image",
+			url: "/img/drawing-peacock-feather/full.jpg",
+			width: 327,
+			height: 418,
+			full: {
+				url: "/img/drawing-peacock-feather/full.jpg",
+				width: 653,
+				height: 835,
+			}
+		}
+	}, {
+		id: "painting-mint-sun",
+		title: "Untitled",
+		timePeriod: "2014",
+		medium: "Acrylic on canvas",
+		repoUrl: null,
+		description: null,
+		instructions: null,
+		grid: {
+			previewImage: {
+				url: "/sheets/sheet2.png",
+				x: 276,
+				y: 660
+			},
+			imageUrl: "/img/painting-mint-sun/icon.jpg",
+			tiles: ["XX"]
+		},
+		content: {
+			type: "image",
+			url: "/img/painting-mint-sun/small.jpg",
+			width: 458,
+			height: 363,
+			full: {
+				url: "/img/painting-mint-sun/full.jpg",
+				width: 915,
+				height: 725
+			}
+		}
+	}, {
 		id: "tranquilime",
 		title: "tranquilime",
 		timePeriod: "September 2013",
@@ -549,7 +617,9 @@ module.exports = [
 		instructions: null,
 		grid: {
 			previewImage: {
-				url: "/img/painting-gazelle/yellow.jpg"
+				url: "/sheets/sheet3.png",
+				x: 384,
+				y: 480
 			},
 			imageUrl: "/img/painting-gazelle/icon.jpg",
 			tiles: ["XX","XX"]
@@ -589,6 +659,64 @@ module.exports = [
 			height: 500,
 			x: 10,
 			y: 80
+		}
+	}, {
+		id: "comic-dota-matchmaking",
+		title: "DotA 2 Matchmaking",
+		timePeriod: "2012",
+		medium: "Photoshop",
+		repoUrl: null,
+		description: "My experiences with DotA 2 matchmaking.",
+		instructions: null,
+		grid: {
+			previewImage: {
+				url: "/sheets/sheet1.png",
+				x: 552,
+				y: 492
+			},
+			imageUrl: "/img/comic-dota-matchmaking/icon.gif",
+			tiles: ["X"]
+		},
+		content: {
+			type: "image",
+			url: "/img/comic-dota-matchmaking/small.jpg",
+			width: 375,
+			height: 407,
+			isPixelArt: true,
+			full: {
+				url: "/img/comic-dota-matchmaking/full.gif",
+				width: 750,
+				height: 813
+			}
+		}
+	}, {
+		id: "pixel-art-gazelle",
+		title: "Gazelle Gladiator",
+		timePeriod: "2012",
+		medium: "Photoshop",
+		repoUrl: null,
+		description: "One of my first pieces of pixel art.",
+		instructions: null,
+		grid: {
+			previewImage: {
+				url: "/sheets/sheet2.png",
+				x: 132,
+				y: 684
+			},
+			imageUrl: "/img/pixel-art-gazelle/icon.gif",
+			tiles: ["X"]
+		},
+		content: {
+			type: "image",
+			url: "/img/pixel-art-gazelle/168x182.gif",
+			width: 336,
+			height: 364,
+			isPixelArt: true,
+			full: {
+				url: "/img/pixel-art-gazelle/168x182.gif",
+				width: 840,
+				height: 910
+			}
 		}
 	}, {
 		id: "zombie-aflockalypse",
