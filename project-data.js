@@ -11,7 +11,7 @@ module.exports = [
 			previewImage: {
 				url: "/sheets/sheet2.png",
 				x: 204,
-				y: 625
+				y: 624
 			},
 			imageUrl: "/img/pixel-art-grapplegirl/animated.gif",
 			tiles: ["X"]
